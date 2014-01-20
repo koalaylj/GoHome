@@ -39,7 +39,7 @@ public class Canvas : MonoBehaviour
         penOffsetX = Convert.ToInt32(-0.5f * penSizeX);
         penOffsetY = Convert.ToInt32(-0.5f * penSizeY);
 
-        //Clean();
+        Clean();
 
     }
 
@@ -65,19 +65,44 @@ public class Canvas : MonoBehaviour
 
     void CreateMesh()
     {
+        //Vector3 p1 = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f);
+        //Vector3 p2 = new Vector3(-Screen.width * 0.5f, Screen.height * 0.5f);
+        //Vector3 p3 = new Vector3(-Screen.width * 0.5f, -Screen.height * 0.5f);
+        //Vector3 p4 = new Vector3(Screen.width * 0.5f, -Screen.height * 0.5f);
+
+        //Vector3[] verts = new Vector3[] { p1, p2, p3, p4 };
+
+        //Vector2[] uv = new Vector2[] {
+        //        new Vector2(0f, 1f),
+        //        new Vector2(1f, 1f),
+        //        new Vector2(1f, 0f),
+        //        new Vector2(0f, 0f)
+        //    };
+
+        //int[] triangles = new int[] {
+        //    0, 2, 1, 2, 0, 3
+        //};
+
+
+
         Vector3 lt = new Vector3(-Screen.width * 0.5f, Screen.height * 0.5f);
         Vector3 rt = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f);
         Vector3 lb = new Vector3(-Screen.width * 0.5f, -Screen.height * 0.5f);
         Vector3 rb = new Vector3(Screen.width * 0.5f, -Screen.height * 0.5f);
 
-        Vector3[] verts = new Vector3[] { lt, rt, lb, rb };
+        //Debug.Log("Screen.width:" + Screen.width + ",Screen.height:" + Screen.height);
+        //Debug.Log(lt + "," + rt + "," + lb + "," + rb);
+
+        Vector3[] verts = new Vector3[] {
+            lt, rt, lb, rb
+        };
 
         Vector2[] uv = new Vector2[] {
-                new Vector2(0.0f, 1.0f),
-                new Vector2(1.0f, 1.0f),
-                new Vector2(0.0f, 0.0f),
-                new Vector2(1.0f, 0.0f)
-            };
+            new Vector2( 0.0f, 1.0f ),
+            new Vector2( 1.0f, 1.0f ),
+            new Vector2( 0.0f, 0.0f ),
+            new Vector2( 1.0f, 0.0f )
+        };
 
         int[] triangles = new int[] {
             0, 1, 2, 1, 3, 2
@@ -90,7 +115,8 @@ public class Canvas : MonoBehaviour
         mesh.RecalculateNormals();
 
         MeshFilter filter = GetComponent<MeshFilter>();
-        filter.mesh = mesh;
+        filter.sharedMesh = mesh;
+
         MeshCollider col = gameObject.AddComponent<MeshCollider>();
         col.sharedMesh = mesh;
         col.isTrigger = true;
@@ -101,7 +127,6 @@ public class Canvas : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
         // Debug.DrawRay(ray.origin, ray.direction);
-
         //Debug.DrawLine(ray.origin, new Vector3(ray.origin.x, ray.origin.y, ray.origin.z + 100), Color.green);
 
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
@@ -109,7 +134,7 @@ public class Canvas : MonoBehaviour
 
         if (hit.transform != null)
         {
-            Debug.Log("hit:" + hit.transform.gameObject.name);
+            //Debug.Log("hit:" + hit.transform.gameObject.name);
         }
 
         if (collider.Raycast(ray, out hitInfo, 100))
