@@ -24,13 +24,13 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -44,6 +44,60 @@ TextureImporter:
     textureFormat: -2
     compressionQuality: 50
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Idel_0
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 14
+        width: 56
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Idel_1
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 14
+        width: 56
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Idel_2
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 14
+        width: 56
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Idel_3
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 14
+        width: 56
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Idel_4
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 14
+        width: 56
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Idel_5
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 14
+        width: 56
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
   spritePackingTag: 
   userData: 

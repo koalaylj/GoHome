@@ -1,0 +1,175 @@
+fileFormatVersion: 2
+guid: b7d4940a0ca5ab0428f1cc52270fe488
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: Fart_0
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 95
+        width: 106
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Fart_1
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 82
+        width: 176
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Fart_2
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 81
+        width: 186
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Fart_3
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 81
+        width: 203
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Fart_4
+      rect:
+        serializedVersion: 2
+        x: 1247
+        y: 81
+        width: 227
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Fart_5
+      rect:
+        serializedVersion: 2
+        x: 1547
+        y: 82
+        width: 242
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Fart_6
+      rect:
+        serializedVersion: 2
+        x: 1832
+        y: 82
+        width: 253
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Fart_7
+      rect:
+        serializedVersion: 2
+        x: 2125
+        y: 74
+        width: 262
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Fart_8
+      rect:
+        serializedVersion: 2
+        x: 2424
+        y: 87
+        width: 275
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Fart_9
+      rect:
+        serializedVersion: 2
+        x: 2732
+        y: 73
+        width: 266
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Fart_10
+      rect:
+        serializedVersion: 2
+        x: 3031
+        y: 74
+        width: 266
+        height: 226
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Fart_11
+      rect:
+        serializedVersion: 2
+        x: 3335
+        y: 66
+        width: 238
+        height: 231
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Fart_12
+      rect:
+        serializedVersion: 2
+        x: 3589
+        y: 74
+        width: 274
+        height: 220
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Fart_13
+      rect:
+        serializedVersion: 2
+        x: 3958
+        y: 103
+        width: 180
+        height: 188
+      alignment: 0
+      pivot: {x: .5, y: .5}
+  spritePackingTag: 
+  userData: 

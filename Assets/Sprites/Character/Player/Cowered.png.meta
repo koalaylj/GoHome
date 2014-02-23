@@ -53,7 +53,7 @@ TextureImporter:
         width: 70
         height: 89
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Cowered_1
       rect:
         serializedVersion: 2
@@ -61,8 +61,8 @@ TextureImporter:
         y: 6
         width: 79
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: .514003336, y: .624454141}
     - name: Cowered_2
       rect:
         serializedVersion: 2
@@ -70,8 +70,8 @@ TextureImporter:
         y: 6
         width: 87
         height: 76
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: .521192908, y: .766860664}
     - name: Cowered_3
       rect:
         serializedVersion: 2
@@ -79,7 +79,7 @@ TextureImporter:
         y: 6
         width: 76
         height: 54
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 2
+      pivot: {x: .5, y: 1}
   spritePackingTag: 
   userData: 

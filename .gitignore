@@ -4,11 +4,13 @@
 #################
 *.csproj
 *.sln
+*.suo
 *.userprefs
 *.unityproj
 Library/
 obj/
 Temp/
+Dist/
 
 
 #################

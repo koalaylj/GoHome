@@ -13,7 +13,7 @@ public class PlayerControl : MonoBehaviour
     private float maxSpeed = 500f;
 
     [SerializeField]
-    private float jumpForce = 1000f;
+    private float jumpForce = 500;
 
     private Transform groundCheck;			// A position marking where to check if the player is grounded.
     private bool grounded = false;			// Whether or not the player is grounded.
@@ -59,6 +59,10 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
             Move(h);
+        }
+        else
+        {
+            rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y);
         }
 
 
