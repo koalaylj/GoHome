@@ -46,21 +46,21 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 5
+        y: 0
         width: 193
         height: 342
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: caught_1
+    - name: caught_2
       rect:
         serializedVersion: 2
-        x: 417
-        y: 91
-        width: 14
-        height: 5
+        x: 242
+        y: 0
+        width: 190
+        height: 347
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

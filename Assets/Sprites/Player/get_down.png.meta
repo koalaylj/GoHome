@@ -49,18 +49,18 @@ TextureImporter:
         y: 0
         width: 208
         height: 247
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: get_down_1
       rect:
         serializedVersion: 2
-        x: 237
+        x: 236
         y: 0
         width: 218
         height: 247
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: get_down_2
       rect:
@@ -69,8 +69,8 @@ TextureImporter:
         y: 0
         width: 210
         height: 234
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: get_down_3
       rect:
@@ -79,8 +79,8 @@ TextureImporter:
         y: 0
         width: 218
         height: 195
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: get_down_4
       rect:
@@ -89,8 +89,8 @@ TextureImporter:
         y: 0
         width: 210
         height: 168
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

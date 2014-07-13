@@ -24,9 +24,9 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -41,6 +41,86 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: die_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 208
+        height: 246
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: die_1
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 61
+        width: 209
+        height: 258
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: die_2
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 70
+        width: 205
+        height: 284
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: die_3
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 48
+        width: 249
+        height: 302
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: die_4
+      rect:
+        serializedVersion: 2
+        x: 1445
+        y: 20
+        width: 292
+        height: 346
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: die_5
+      rect:
+        serializedVersion: 2
+        x: 1786
+        y: 0
+        width: 484
+        height: 377
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: die_6
+      rect:
+        serializedVersion: 2
+        x: 2345
+        y: 11
+        width: 384
+        height: 352
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: die_7
+      rect:
+        serializedVersion: 2
+        x: 2770
+        y: 48
+        width: 430
+        height: 331
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
