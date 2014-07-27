@@ -35,8 +35,8 @@ public class ScreenRaycaster : MonoBehaviour
         if (Cameras == null || Cameras.Length == 0)
             Cameras = new Camera[] { Camera.main };
     }
-
-    public bool Raycast(Vector2 screenPos, out RaycastHit2D hit)//ylj 
+#if K_2D
+    public bool Raycast(Vector2 screenPos, out RaycastHit2D hit)
     {
         foreach (Camera cam in Cameras)
         {
@@ -44,24 +44,31 @@ public class ScreenRaycaster : MonoBehaviour
                 return true;
         }
 
-        hit = new RaycastHit2D();//ylj 
+        hit = new RaycastHit2D();
         return false;
     }
+#else 
+        public bool Raycast( Vector2 screenPos, out RaycastHit hit )
+    {
+        foreach( Camera cam in Cameras )
+        {
+            if( Raycast( cam, screenPos, out hit ) )
+                return true;
+        }
 
-    bool Raycast(Camera cam, Vector2 screenPos, out RaycastHit2D hit) //ylj 
+        hit = new RaycastHit();
+        return false;
+    }
+#endif
+#if K_2D
+    bool Raycast(Camera cam, Vector2 screenPos, out RaycastHit2D hit)
     {
         Ray ray = cam.ScreenPointToRay(screenPos);
         bool didHit = false;
 
-        //ylj 
-        //if( RayThickness > 0 )
-        //    didHit = Physics2D.SphereCast( ray, 0.5f * RayThickness, out hit, Mathf.Infinity, ~IgnoreLayerMask );
-        //else
-        // didHit = Physics2D.Raycast( ray, out hit, Mathf.Infinity, ~IgnoreLayerMask );
-        //hit = Physics2D.Raycast(screenPos, ray.direction);
         hit = Physics2D.Raycast(cam.ScreenToWorldPoint(screenPos), Vector2.zero);
         didHit = hit.collider != null;
-        // vizualise ray
+
 #if UNITY_EDITOR
         if (VisualizeRaycasts)
         {
@@ -74,4 +81,29 @@ public class ScreenRaycaster : MonoBehaviour
 
         return didHit;
     }
+#else
+        bool Raycast( Camera cam, Vector2 screenPos, out RaycastHit hit )
+    {
+        Ray ray = cam.ScreenPointToRay( screenPos );
+        bool didHit = false;
+
+        if( RayThickness > 0 )
+            didHit = Physics.SphereCast( ray, 0.5f * RayThickness, out hit, Mathf.Infinity, ~IgnoreLayerMask );
+        else
+            didHit = Physics.Raycast( ray, out hit, Mathf.Infinity, ~IgnoreLayerMask );
+
+        // vizualise ray
+#if UNITY_EDITOR
+        if( VisualizeRaycasts )
+        {
+            if( didHit )
+                Debug.DrawLine( ray.origin, hit.point, Color.green, 0.5f );
+            else
+                Debug.DrawLine( ray.origin, ray.origin + ray.direction * 9999.0f, Color.red, 0.5f );
+        }
+#endif
+
+        return didHit;
+    }
+#endif
 }

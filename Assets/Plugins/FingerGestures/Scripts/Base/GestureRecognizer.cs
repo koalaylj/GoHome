@@ -62,7 +62,7 @@ public enum GestureResetMode
 
 public abstract class Gesture
 {
-    public delegate void EventHandler( Gesture gesture );
+    public delegate void EventHandler(Gesture gesture);
     public event EventHandler OnStateChanged;
 
     // finger cluster
@@ -129,13 +129,13 @@ public abstract class Gesture
         get { return state; }
         set
         {
-            if( state != value )
+            if (state != value)
             {
                 prevState = state;
                 state = value;
 
-                if( OnStateChanged != null )
-                    OnStateChanged( this );
+                if (OnStateChanged != null)
+                    OnStateChanged(this);
             }
         }
     }
@@ -160,9 +160,11 @@ public abstract class Gesture
 
     GameObject startSelection;  // object picked at StartPosition
     GameObject selection;       // object picked at current Position
-    RaycastHit2D lastHit = new RaycastHit2D();//ylj
-
-    
+#if K_2D
+    RaycastHit2D lastHit = new RaycastHit2D();
+#else
+    RaycastHit lastHit = new RaycastHit();
+#endif
     /// <summary>
     /// GameObject that was at the gesture start position
     /// </summary>
@@ -184,30 +186,36 @@ public abstract class Gesture
     /// <summary>
     /// Last raycast hit result
     /// </summary>
-    public RaycastHit2D Hit//ylj
+#if K_2D
+    public RaycastHit2D Hit
+#else
+        public RaycastHit Hit
+#endif
     {
         get { return lastHit; }
         internal set { lastHit = value; }
     }
 
-    internal GameObject PickObject( ScreenRaycaster raycaster, Vector2 screenPos )
+    internal GameObject PickObject(ScreenRaycaster raycaster, Vector2 screenPos)
     {
-        if( !raycaster || !raycaster.enabled )
+        if (!raycaster || !raycaster.enabled)
             return null;
-        if( !raycaster.Raycast( screenPos, out lastHit ) )
+
+        if (!raycaster.Raycast(screenPos, out lastHit))
             return null;
+
         return lastHit.collider.gameObject;
     }
 
-    internal void PickStartSelection( ScreenRaycaster raycaster )
+    internal void PickStartSelection(ScreenRaycaster raycaster)
     {
-        StartSelection = PickObject( raycaster, StartPosition );
+        StartSelection = PickObject(raycaster, StartPosition);
         Selection = StartSelection;
     }
 
-    internal void PickSelection( ScreenRaycaster raycaster )
+    internal void PickSelection(ScreenRaycaster raycaster)
     {
-        Selection = PickObject( raycaster, Position );
+        Selection = PickObject(raycaster, Position);
     }
 
     #endregion
@@ -217,7 +225,7 @@ public abstract class GestureRecognizer<T> : GestureRecognizer where T : Gesture
 {
     List<T> gestures;
 
-    public delegate void GestureEventHandler( T gesture );
+    public delegate void GestureEventHandler(T gesture);
     public event GestureEventHandler OnGesture;
 
     protected override void Start()
@@ -231,23 +239,23 @@ public abstract class GestureRecognizer<T> : GestureRecognizer where T : Gesture
         base.OnEnable();
 
         // support recompilation while running
-    #if UNITY_EDITOR
-        InitGestures(); 
-    #endif
+#if UNITY_EDITOR
+        InitGestures();
+#endif
     }
 
     void InitGestures()
     {
-        if( gestures == null )
+        if (gestures == null)
         {
             gestures = new List<T>();
-            
-            for( int i = 0; i < MaxSimultaneousGestures; ++i )
+
+            for (int i = 0; i < MaxSimultaneousGestures; ++i)
             {
                 T gesture = CreateGesture();
                 gesture.OnStateChanged += OnStateChanged;
                 gesture.Recognizer = this;
-                gestures.Add( gesture );
+                gestures.Add(gesture);
             }
         }
     }
@@ -264,16 +272,16 @@ public abstract class GestureRecognizer<T> : GestureRecognizer where T : Gesture
     /// This controls whether or not the gesture recognition should begin
     /// </summary>
     /// <param name="touches">The active touches</param>
-    protected virtual bool CanBegin( T gesture, FingerGestures.IFingerList touches )
+    protected virtual bool CanBegin(T gesture, FingerGestures.IFingerList touches)
     {
-        if( touches.Count != RequiredFingerCount )
+        if (touches.Count != RequiredFingerCount)
             return false;
 
-        if( IsExclusive && FingerGestures.Touches.Count != RequiredFingerCount )
+        if (IsExclusive && FingerGestures.Touches.Count != RequiredFingerCount)
             return false;
 
         // check with the delegate (provided we have one set)
-        if( Delegate && !Delegate.CanBegin( gesture, touches ) )
+        if (Delegate && !Delegate.CanBegin(gesture, touches))
             return false;
 
         return true;
@@ -283,19 +291,19 @@ public abstract class GestureRecognizer<T> : GestureRecognizer where T : Gesture
     /// Method called when the gesture recognizer has just started recognizing a valid gesture
     /// </summary>
     /// <param name="touches">The active touches</param>
-    protected abstract void OnBegin( T gesture, FingerGestures.IFingerList touches );
+    protected abstract void OnBegin(T gesture, FingerGestures.IFingerList touches);
 
     /// <summary>
     /// Method called on each frame that the gesture recognizer is in an active state
     /// </summary>
     /// <param name="touches">The active touches</param>
     /// <returns>The new state the gesture recognizer should be in</returns>
-    protected abstract GestureRecognitionState OnRecognize( T gesture, FingerGestures.IFingerList touches );
+    protected abstract GestureRecognitionState OnRecognize(T gesture, FingerGestures.IFingerList touches);
 
     /// <summary>
     /// Return the default target used when sending gesture event notifications to selected object
     /// </summary>
-    protected virtual GameObject GetDefaultSelectionForSendMessage( T gesture ) { return gesture.Selection; }
+    protected virtual GameObject GetDefaultSelectionForSendMessage(T gesture) { return gesture.Selection; }
 
     /// <summary>
     /// Instantiate a new gesture object
@@ -307,32 +315,32 @@ public abstract class GestureRecognizer<T> : GestureRecognizer where T : Gesture
 
     public override System.Type GetGestureType()
     {
-        return typeof( T );
+        return typeof(T);
     }
 
-    protected virtual void OnStateChanged( Gesture gesture )
+    protected virtual void OnStateChanged(Gesture gesture)
     {
         //Debug.Log( this.GetType().Name + " changed state from " + gesture.PreviousState + " to " + gesture.State );
     }
 
-    protected virtual T FindGestureByCluster( FingerClusterManager.Cluster cluster )
+    protected virtual T FindGestureByCluster(FingerClusterManager.Cluster cluster)
     {
-        return gestures.Find( g => g.ClusterId == cluster.Id );
+        return gestures.Find(g => g.ClusterId == cluster.Id);
     }
 
-    protected virtual T MatchActiveGestureToCluster( FingerClusterManager.Cluster cluster )
+    protected virtual T MatchActiveGestureToCluster(FingerClusterManager.Cluster cluster)
     {
         return null;
     }
 
     protected virtual T FindFreeGesture()
     {
-        return gestures.Find( g => g.State == GestureRecognitionState.Ready );
+        return gestures.Find(g => g.State == GestureRecognitionState.Ready);
     }
 
-    protected virtual void Reset( T gesture )
+    protected virtual void Reset(T gesture)
     {
-        ReleaseFingers( gesture );
+        ReleaseFingers(gesture);
 
         gesture.ClusterId = 0;
         gesture.Fingers.Clear();
@@ -343,13 +351,13 @@ public abstract class GestureRecognizer<T> : GestureRecognizer where T : Gesture
 
     public virtual void Update()
     {
-        if( !IsExclusive && SupportFingerClustering && ClusterManager )
+        if (!IsExclusive && SupportFingerClustering && ClusterManager)
         {
             UpdateUsingClusters();
         }
         else
         {
-            if( IsExclusive || RequiredFingerCount > 1 )
+            if (IsExclusive || RequiredFingerCount > 1)
                 UpdateExclusive();
             else
                 UpdatePerFinger();
@@ -361,14 +369,14 @@ public abstract class GestureRecognizer<T> : GestureRecognizer where T : Gesture
         // force cluster manager to update now (ensures we have most up to date finger state)
         ClusterManager.Update();
 
-        foreach( FingerClusterManager.Cluster cluster in ClusterManager.Clusters )
-            ProcessCluster( cluster );
+        foreach (FingerClusterManager.Cluster cluster in ClusterManager.Clusters)
+            ProcessCluster(cluster);
 
-        foreach( T g in gestures )
+        foreach (T g in gestures)
         {
-            FingerClusterManager.Cluster cluster = ClusterManager.FindClusterById( g.ClusterId );
-            FingerGestures.IFingerList touches = ( cluster != null ) ? cluster.Fingers : EmptyFingerList;
-            UpdateGesture( g, touches );
+            FingerClusterManager.Cluster cluster = ClusterManager.FindClusterById(g.ClusterId);
+            FingerGestures.IFingerList touches = (cluster != null) ? cluster.Fingers : EmptyFingerList;
+            UpdateGesture(g, touches);
         }
     }
 
@@ -379,55 +387,55 @@ public abstract class GestureRecognizer<T> : GestureRecognizer where T : Gesture
 
         FingerGestures.IFingerList touches = FingerGestures.Touches;
 
-        if( gesture.State == GestureRecognitionState.Ready )
+        if (gesture.State == GestureRecognitionState.Ready)
         {
-            if( CanBegin( gesture, touches ) )
-                Begin( gesture, 0, touches );
+            if (CanBegin(gesture, touches))
+                Begin(gesture, 0, touches);
         }
 
-        UpdateGesture( gesture, touches );
+        UpdateGesture(gesture, touches);
     }
 
     static FingerGestures.FingerList tempTouchList = new FingerGestures.FingerList();
 
     void UpdatePerFinger()
     {
-        for( int i = 0; i < FingerGestures.Instance.MaxFingers && i < MaxSimultaneousGestures; ++i )
+        for (int i = 0; i < FingerGestures.Instance.MaxFingers && i < MaxSimultaneousGestures; ++i)
         {
-            FingerGestures.Finger finger = FingerGestures.GetFinger( i );
+            FingerGestures.Finger finger = FingerGestures.GetFinger(i);
             T gesture = Gestures[i];
 
             FingerGestures.FingerList touches = tempTouchList;
             touches.Clear();
 
-            if( finger.IsDown )
-                touches.Add( finger );
+            if (finger.IsDown)
+                touches.Add(finger);
 
-            if( gesture.State == GestureRecognitionState.Ready )
+            if (gesture.State == GestureRecognitionState.Ready)
             {
-                if( CanBegin( gesture, touches ) )
-                    Begin( gesture, 0, touches );
+                if (CanBegin(gesture, touches))
+                    Begin(gesture, 0, touches);
             }
 
-            UpdateGesture( gesture, touches );
+            UpdateGesture(gesture, touches);
         }
     }
 
-    protected virtual void ProcessCluster( FingerClusterManager.Cluster cluster )
+    protected virtual void ProcessCluster(FingerClusterManager.Cluster cluster)
     {
         // this cluster already has a gesture associated to it
-        if( FindGestureByCluster( cluster ) != null )
+        if (FindGestureByCluster(cluster) != null)
             return;
 
         // only consider clusters that match our gesture's required finger count
-        if( cluster.Fingers.Count != RequiredFingerCount )
+        if (cluster.Fingers.Count != RequiredFingerCount)
             return;
 
         // give a chance to an active gesture to claim that cluster
-        T gesture = MatchActiveGestureToCluster( cluster );
+        T gesture = MatchActiveGestureToCluster(cluster);
 
         // found an active gesture to rebind the cluster to
-        if( gesture != null )
+        if (gesture != null)
         {
             // reassign cluster id
             gesture.ClusterId = cluster.Id;
@@ -438,26 +446,26 @@ public abstract class GestureRecognizer<T> : GestureRecognizer where T : Gesture
             gesture = FindFreeGesture();
 
             // out of gestures
-            if( gesture == null )
+            if (gesture == null)
                 return;
 
             // did we recognize the beginning a valid gesture?
-            if( !CanBegin( gesture, cluster.Fingers ) )
+            if (!CanBegin(gesture, cluster.Fingers))
                 return;
 
-            Begin( gesture, cluster.Id, cluster.Fingers );
+            Begin(gesture, cluster.Id, cluster.Fingers);
         }
     }
 
     #endregion
 
-    void ReleaseFingers( T gesture )
+    void ReleaseFingers(T gesture)
     {
-        foreach( FingerGestures.Finger finger in gesture.Fingers )
-            Release( finger );
+        foreach (FingerGestures.Finger finger in gesture.Fingers)
+            Release(finger);
     }
 
-    void Begin( T gesture, int clusterId, FingerGestures.IFingerList touches )
+    void Begin(T gesture, int clusterId, FingerGestures.IFingerList touches)
     {
         //Debug.Log( "Beginning " + this.GetType().Name );
 
@@ -466,51 +474,51 @@ public abstract class GestureRecognizer<T> : GestureRecognizer where T : Gesture
 
         // sanity check
 #if UNITY_EDITOR
-        if( gesture.Fingers.Count > 0 )
-            Debug.LogWarning( this.name + " begin gesture with fingers list not properly released" );
+        if (gesture.Fingers.Count > 0)
+            Debug.LogWarning(this.name + " begin gesture with fingers list not properly released");
 #endif
 
-        foreach( FingerGestures.Finger finger in touches )
+        foreach (FingerGestures.Finger finger in touches)
         {
-            gesture.Fingers.Add( finger );
-            Acquire( finger );
+            gesture.Fingers.Add(finger);
+            Acquire(finger);
         }
 
-        OnBegin( gesture, touches );
+        OnBegin(gesture, touches);
 
-        gesture.PickStartSelection( Raycaster );
+        gesture.PickStartSelection(Raycaster);
         gesture.State = GestureRecognitionState.Started;
     }
 
-    protected virtual FingerGestures.IFingerList GetTouches( T gesture )
+    protected virtual FingerGestures.IFingerList GetTouches(T gesture)
     {
-        if( SupportFingerClustering && ClusterManager )
+        if (SupportFingerClustering && ClusterManager)
         {
-            FingerClusterManager.Cluster cluster = ClusterManager.FindClusterById( gesture.ClusterId );
-            return ( cluster != null ) ? cluster.Fingers : EmptyFingerList;
+            FingerClusterManager.Cluster cluster = ClusterManager.FindClusterById(gesture.ClusterId);
+            return (cluster != null) ? cluster.Fingers : EmptyFingerList;
         }
 
         return FingerGestures.Touches;
     }
 
-    protected virtual void UpdateGesture( T gesture, FingerGestures.IFingerList touches )
+    protected virtual void UpdateGesture(T gesture, FingerGestures.IFingerList touches)
     {
-        if( gesture.State == GestureRecognitionState.Ready )
+        if (gesture.State == GestureRecognitionState.Ready)
             return;
 
-        if( gesture.State == GestureRecognitionState.Started )
+        if (gesture.State == GestureRecognitionState.Started)
             gesture.State = GestureRecognitionState.InProgress;
 
-        switch( gesture.State )
+        switch (gesture.State)
         {
             case GestureRecognitionState.InProgress:
                 {
                     GestureRecognitionState newState;
 
-                    newState = OnRecognize( gesture, touches );
+                    newState = OnRecognize(gesture, touches);
 
-                    if( newState == GestureRecognitionState.InProgress )
-                        gesture.PickSelection( Raycaster );
+                    if (newState == GestureRecognitionState.InProgress)
+                        gesture.PickSelection(Raycaster);
 
                     gesture.State = newState;
                 }
@@ -520,42 +528,42 @@ public abstract class GestureRecognizer<T> : GestureRecognizer where T : Gesture
             case GestureRecognitionState.Failed:
                 {
                     // release the fingers right away so another recognizer can use them, even though this one isn't reset yet
-                    if( gesture.PreviousState != gesture.State ) // only do this the first time we enter this state
-                        ReleaseFingers( gesture );
+                    if (gesture.PreviousState != gesture.State) // only do this the first time we enter this state
+                        ReleaseFingers(gesture);
 
                     // check if we should reset the gesture now
-                    if( ResetMode == GestureResetMode.NextFrame || ( ResetMode == GestureResetMode.EndOfTouchSequence && touches.Count == 0 ) )
-                        Reset( gesture );
+                    if (ResetMode == GestureResetMode.NextFrame || (ResetMode == GestureResetMode.EndOfTouchSequence && touches.Count == 0))
+                        Reset(gesture);
                 }
                 break;
 
             default:
-                Debug.LogError( this + " - Unhandled state: " + gesture.State + ". Failing gesture." );
+                Debug.LogError(this + " - Unhandled state: " + gesture.State + ". Failing gesture.");
                 gesture.State = GestureRecognitionState.Failed;
                 break;
         }
     }
 
-    protected void RaiseEvent( T gesture )
+    protected void RaiseEvent(T gesture)
     {
-        if( OnGesture != null )
-            OnGesture( gesture );
+        if (OnGesture != null)
+            OnGesture(gesture);
 
-        FingerGestures.FireEvent( gesture );
+        FingerGestures.FireEvent(gesture);
 
-        if( UseSendMessage && !string.IsNullOrEmpty( EventMessageName ) )
+        if (UseSendMessage && !string.IsNullOrEmpty(EventMessageName))
         {
-            if( EventMessageTarget )
-                EventMessageTarget.SendMessage( EventMessageName, gesture, SendMessageOptions.DontRequireReceiver );
+            if (EventMessageTarget)
+                EventMessageTarget.SendMessage(EventMessageName, gesture, SendMessageOptions.DontRequireReceiver);
 
-            if( SendMessageToSelection != SelectionType.None )
+            if (SendMessageToSelection != SelectionType.None)
             {
                 GameObject sel = null;
 
-                switch( SendMessageToSelection )
+                switch (SendMessageToSelection)
                 {
                     case SelectionType.Default:
-                        sel = GetDefaultSelectionForSendMessage( gesture );
+                        sel = GetDefaultSelectionForSendMessage(gesture);
                         break;
 
                     case SelectionType.CurrentSelection:
@@ -567,8 +575,8 @@ public abstract class GestureRecognizer<T> : GestureRecognizer where T : Gesture
                         break;
                 }
 
-                if( sel && sel != EventMessageTarget )
-                    sel.SendMessage( EventMessageName, gesture, SendMessageOptions.DontRequireReceiver );
+                if (sel && sel != EventMessageTarget)
+                    sel.SendMessage(EventMessageName, gesture, SendMessageOptions.DontRequireReceiver);
             }
         }
     }
@@ -630,7 +638,7 @@ public abstract class GestureRecognizer : MonoBehaviour
     ///  of active touches on the device is equal to RequiredFingerCount (FingerGestures.Touches.Count == RequiredFingerCount)
     /// </summary>
     public bool IsExclusive = false;
-    
+
     /// <summary>
     /// Exact number of touches required for the gesture to be recognized
     /// </summary>
@@ -669,47 +677,47 @@ public abstract class GestureRecognizer : MonoBehaviour
 
     protected virtual void Awake()
     {
-        if( string.IsNullOrEmpty( EventMessageName ) )
+        if (string.IsNullOrEmpty(EventMessageName))
             EventMessageName = GetDefaultEventMessageName();
 
-        if( ResetMode == GestureResetMode.Default )
+        if (ResetMode == GestureResetMode.Default)
             ResetMode = GetDefaultResetMode();
 
-        if( !EventMessageTarget )
+        if (!EventMessageTarget)
             EventMessageTarget = this.gameObject;
 
-        if( !Raycaster )
+        if (!Raycaster)
             Raycaster = GetComponent<ScreenRaycaster>();
     }
 
     protected virtual void OnEnable()
     {
-        FingerGestures.Register( this );
+        FingerGestures.Register(this);
     }
 
     protected virtual void OnDisable()
     {
-        FingerGestures.Unregister( this );
+        FingerGestures.Unregister(this);
     }
 
-    protected void Acquire( FingerGestures.Finger finger )
+    protected void Acquire(FingerGestures.Finger finger)
     {
-        if( !finger.GestureRecognizers.Contains( this ) )
-            finger.GestureRecognizers.Add( this );
+        if (!finger.GestureRecognizers.Contains(this))
+            finger.GestureRecognizers.Add(this);
     }
 
-    protected bool Release( FingerGestures.Finger finger )
+    protected bool Release(FingerGestures.Finger finger)
     {
-        return finger.GestureRecognizers.Remove( this );
+        return finger.GestureRecognizers.Remove(this);
     }
 
     protected virtual void Start()
     {
-        if( !ClusterManager && SupportFingerClustering )
+        if (!ClusterManager && SupportFingerClustering)
         {
             ClusterManager = GetComponent<FingerClusterManager>();
 
-            if( !ClusterManager )
+            if (!ClusterManager)
                 ClusterManager = FingerGestures.DefaultClusterManager;
         }
     }
@@ -721,11 +729,11 @@ public abstract class GestureRecognizer : MonoBehaviour
     /// </summary>
     /// <param name="touches">The touches to evaluate</param>
     /// <returns>True if the age of each touch in the list is under a set threshold</returns>
-    protected bool Young( FingerGestures.IFingerList touches )
+    protected bool Young(FingerGestures.IFingerList touches)
     {
         FingerGestures.Finger oldestTouch = touches.GetOldest();
 
-        if( oldestTouch == null )
+        if (oldestTouch == null)
             return false;
 
         float elapsedTimeSinceFirstTouch = Time.time - oldestTouch.StarTime;
