@@ -113,11 +113,11 @@ public class Player : MonoBehaviour
     {
         if (gesture.Selection == this.gameObject)
         {
-            if (_state == State.NORMAL && _state != State.DOWN)
+            if (_state == State.NORMAL)
             {
                 ChangeState("fat");
             }
-            else
+            else if (_state == State.NORMAL)
             {
                 ChangeState("normal");
             }
