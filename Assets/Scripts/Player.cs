@@ -203,6 +203,10 @@ public class Player : MonoBehaviour
 
     void OnFingerStationary(FingerMotionEvent e)
     {
+       // if (e.Hit.collider!=null && e.Hit.collider.gameObject.layer == LayerMask.GetMask("UI"))
+        {
+           // Debug.Log("e.Selection:" + e.Selection);
+        }
         if (e.Phase == FingerMotionPhase.Started)
         {
             //Debug.Log("*******Started moving " + e.Finger);

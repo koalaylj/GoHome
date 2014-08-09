@@ -53,48 +53,48 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 86
-        height: 103
+        width: 206
+        height: 245
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: idel_1
       rect:
         serializedVersion: 2
-        x: 91
+        x: 215
         y: 0
-        width: 86
-        height: 102
+        width: 207
+        height: 245
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: idel_2
       rect:
         serializedVersion: 2
-        x: 182
+        x: 431
         y: 0
-        width: 86
-        height: 102
+        width: 207
+        height: 244
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: idel_3
       rect:
         serializedVersion: 2
-        x: 273
+        x: 647
         y: 0
-        width: 86
-        height: 102
+        width: 207
+        height: 245
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: idel_4
       rect:
         serializedVersion: 2
-        x: 364
+        x: 863
         y: 0
-        width: 86
-        height: 103
+        width: 206
+        height: 245
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
