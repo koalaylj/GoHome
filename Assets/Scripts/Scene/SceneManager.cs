@@ -6,5 +6,8 @@ public class SceneManager : MonoBehaviour {
     void Start()
     { }
 
-    void OnLevelWasLoaded() { }
+    void OnLevelWasLoaded() {
+        UIManager.Instance.HideAll();
+        UIManager.Instance.Show("Game");
+    }
 }
