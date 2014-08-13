@@ -19,6 +19,6 @@ public class MainPresenter : Presenter {
 	}
 
     void OnClick(GameObject sender) {
-        SceneLoader.LoadScene("Scene_1_1");
+        SceneManager.LoadScene("Scene_1_1");
     }
 }
