@@ -27,7 +27,7 @@ public class SceneManager : MonoBehaviour
         Application.LoadLevel("Loading");
     }
 
-    void LoadScenePrefab()
+    private void LoadPrefab()
     {
         GameObject scenePrefab = Resources.Load("Map/Prefab/" + _scene_to_load) as GameObject;
         GameObject scene = GameObject.Instantiate(scenePrefab) as GameObject;
@@ -41,6 +41,8 @@ public class SceneManager : MonoBehaviour
         player.transform.localPosition = Vector3.zero;
 
         _player = player.GetComponent<Player>();
+
+        
     }
 
 
@@ -55,7 +57,7 @@ public class SceneManager : MonoBehaviour
         UIManager.Instance.HideAll();
         UIManager.Instance.Show("Game");
 
-        LoadScenePrefab();
+        LoadPrefab();
     }
 
 
