@@ -22,6 +22,7 @@ public class LoadingPresenter : Presenter
 
     private float fps = 10.0f;
     private float time;
+
     //一组动画的贴图，在编辑器中赋值。
     public Texture2D[] animations;
     private int nowFram;

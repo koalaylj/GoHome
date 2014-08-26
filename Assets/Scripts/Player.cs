@@ -111,6 +111,8 @@ public class Player : MonoBehaviour
 
     void OnDoubleTap(TapGesture gesture)
     {
+        Debug.Log("double click: " + gesture.Selection);
+
         if (gesture.Selection == this.gameObject)
         {
             if (_state == State.NORMAL)
@@ -126,6 +128,8 @@ public class Player : MonoBehaviour
 
     void OnSwipe(SwipeGesture gesture)
     {
+        Debug.Log("swipe:::" + gesture.Direction);
+
         if (_state == State.FAT)
         {
             var heading = GetSwipeDirectionVector(gesture.Direction);

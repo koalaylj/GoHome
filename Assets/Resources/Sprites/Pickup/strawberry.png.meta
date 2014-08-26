@@ -1,0 +1,435 @@
+fileFormatVersion: 2
+guid: 500bee0ceb9c81142822ba9d32846fd4
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: "\u866B\u7684\u5168\u90E8\u52A8\u753B\u4E00\u8D77_IPAD_\u4FEE\u6539\u72488.25"
+    21300002: eatingStawberry
+    21300004: eatingStrawberry
+    21300006: eatingStrawberry_0
+    21300008: eatingStrawberry_1
+    21300010: eatingStrawberry_2
+    21300012: eatingStrawberry_3
+    21300014: eatingStrawberry_4
+    21300016: eatingStrawberry_5
+    21300018: eatingStrawberry_6
+    21300020: eatingStrawberry_7
+    21300022: eatingStrawberry_8
+    21300024: eatingStrawberry_9
+    21300026: eatingStrawberry_10
+    21300028: eatingStrawberry_11
+    21300030: eatingStrawberry_12
+    21300032: eatingStrawberry_13
+    21300034: eatingStrawberry_14
+    21300036: eatingStrawberry_15
+    21300038: eatingStrawberry_16
+    21300040: eatingStrawberry_17
+    21300042: eatingStrawberry_18
+    21300044: eatingStrawberry_19
+    21300046: eatingStrawberry_20
+    21300048: eatingStrawberry_21
+    21300050: eatingStrawberry_22
+    21300052: eatingStrawberry_23
+    21300054: eatingStrawberry_24
+    21300056: eatingStrawberry_25
+    21300058: eatingStrawberry_26
+    21300060: eatingStrawberry_27
+    21300062: eatingStrawberry_28
+    21300064: eatingStrawberry_29
+    21300066: eatingStrawberry_30
+    21300068: eatingStrawberry_31
+    21300070: eatingStrawberry_32
+    21300072: eatingStrawberry_33
+    21300074: eatingStrawberry_34
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: eatingStrawberry_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 683
+        width: 107
+        height: 111
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 683
+        width: 107
+        height: 111
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_2
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 686
+        width: 107
+        height: 135
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_3
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 683
+        width: 107
+        height: 152
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_4
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 681
+        width: 111
+        height: 144
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_5
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 683
+        width: 110
+        height: 139
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_6
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 684
+        width: 111
+        height: 144
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_7
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 514
+        width: 110
+        height: 139
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_8
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 513
+        width: 111
+        height: 144
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_9
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 512
+        width: 110
+        height: 139
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_10
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 512
+        width: 111
+        height: 144
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_11
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 512
+        width: 110
+        height: 139
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_12
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 513
+        width: 111
+        height: 144
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_13
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 512
+        width: 116
+        height: 143
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_14
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 340
+        width: 115
+        height: 135
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_15
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 341
+        width: 112
+        height: 125
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_16
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 340
+        width: 114
+        height: 135
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_17
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 340
+        width: 115
+        height: 138
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_18
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 341
+        width: 115
+        height: 138
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_19
+      rect:
+        serializedVersion: 2
+        x: 718
+        y: 341
+        width: 115
+        height: 138
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_20
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 339
+        width: 115
+        height: 138
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_21
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 171
+        width: 115
+        height: 138
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_22
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 171
+        width: 115
+        height: 130
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_23
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 171
+        width: 111
+        height: 121
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_24
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 169
+        width: 114
+        height: 113
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_25
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 169
+        width: 111
+        height: 112
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_26
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 170
+        width: 107
+        height: 111
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_27
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 170
+        width: 107
+        height: 115
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_28
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 0
+        width: 107
+        height: 111
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_29
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 0
+        width: 107
+        height: 111
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_30
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 2
+        width: 96
+        height: 108
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_31
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 1
+        width: 91
+        height: 105
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_32
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 2
+        width: 85
+        height: 105
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_33
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 3
+        width: 81
+        height: 105
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: eatingStrawberry_34
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 3
+        width: 80
+        height: 101
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
