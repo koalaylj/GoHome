@@ -128,11 +128,12 @@ public class Player : MonoBehaviour
 
     void OnSwipe(SwipeGesture gesture)
     {
-        Debug.Log("swipe:::" + gesture.Direction);
+        Debug.Log("swipe:::" + gesture.Direction + "," + gesture.Move + "," + gesture.Velocity);
 
         if (_state == State.FAT)
         {
-            var heading = GetSwipeDirectionVector(gesture.Direction);
+            //var heading = GetSwipeDirectionVector(gesture.Direction);
+            var heading = Vector3.Normalize(gesture.Move);
             rigidbody2D.AddForce(heading * moveForce / 15);
             // transform.rotation = Quaternion.LookRotation(new Vector3(0,0,heading.z));
         }
