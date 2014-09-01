@@ -119,7 +119,7 @@ public class Player : MonoBehaviour
             {
                 ChangeState("fat");
             }
-            else if (_state == State.NORMAL)
+            else if (_state == State.FAT)
             {
                 ChangeState("normal");
             }
