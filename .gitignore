@@ -1,7 +1,3 @@
-
-#################
-## Unity3d
-#################
 *.csproj
 *.sln
 *.suo
@@ -10,14 +6,11 @@
 obj/
 Temp/
 Dist/
-
-
 # User-specific files
-*.suo
 *.user
-*.sln.docstates
 *.log
-*.bin
+*.dwlt
+Library/expanedItems/
 Library/ScriptAssemblies/
 Library/metadata/
 Library/ShaderCache/
