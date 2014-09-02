@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: f12125c7cf50971449ea4d9adf61496f
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: Scene_1_20_qj
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -24,9 +26,9 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50

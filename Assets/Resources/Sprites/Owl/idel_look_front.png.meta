@@ -1,6 +1,11 @@
 fileFormatVersion: 2
 guid: 8a39e34af40293c4082139aa83bd925c
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: idel_look_front_0
+    21300002: idel_look_front_2
+    21300004: idel_look_front_3
+    21300006: idel_look_front_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

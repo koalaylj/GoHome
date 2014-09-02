@@ -1,6 +1,11 @@
 fileFormatVersion: 2
 guid: 05d35e7e81587684687484c2dd73b886
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: faint_0
+    21300002: faint_1
+    21300004: faint_2
+    21300006: faint_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

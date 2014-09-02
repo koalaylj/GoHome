@@ -1,6 +1,11 @@
 fileFormatVersion: 2
 guid: 64904fa48e87086469863d5845dae472
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: flower_idel_0
+    21300002: flower_idel_1
+    21300004: flower_idel_2
+    21300006: flower_idel_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

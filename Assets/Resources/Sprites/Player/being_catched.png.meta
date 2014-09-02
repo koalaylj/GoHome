@@ -1,6 +1,11 @@
 fileFormatVersion: 2
 guid: abf477019f7528f4399dbf2bb93ca0f0
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: being_catched_0
+    21300002: being_catched_1
+    21300004: being_catched_2
+    21300006: being_catched_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

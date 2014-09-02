@@ -1,6 +1,14 @@
 fileFormatVersion: 2
 guid: c9c048268c117cb4295f6416cf3bd836
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: flower_attack_0
+    21300002: flower_attack_1
+    21300004: flower_attack_2
+    21300006: flower_attack_3
+    21300008: flower_attack_4
+    21300010: flower_attack_5
+    21300012: flower_attack_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

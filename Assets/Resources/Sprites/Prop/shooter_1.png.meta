@@ -1,6 +1,13 @@
 fileFormatVersion: 2
 guid: 67c2c55dd0f7e2d49b1823acad736a12
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: shooter_1_0
+    21300002: shooter_1_1
+    21300004: shooter_1_2
+    21300006: shooter_1_3
+    21300008: shooter_1_4
+    21300010: shooter_1_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

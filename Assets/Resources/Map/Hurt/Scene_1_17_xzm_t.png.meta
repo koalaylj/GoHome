@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: ee7b716ba9146774697e5ffb08b17ed7
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: Scene_1_17_xzm_t
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -24,9 +26,9 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50

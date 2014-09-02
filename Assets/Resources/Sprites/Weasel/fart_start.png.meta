@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 guid: feeed154ed074fd4daab9b1972f21481
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: fart_start_0
+    21300002: fart_start_1
+    21300004: fart_start_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

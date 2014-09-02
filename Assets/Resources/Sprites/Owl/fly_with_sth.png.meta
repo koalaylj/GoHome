@@ -1,6 +1,11 @@
 fileFormatVersion: 2
 guid: 75c3ea8b579d5544ebb6fc60c0f44c6d
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: fly_with_sth_0
+    21300002: fly_with_sth_2
+    21300004: fly_with_sth_3
+    21300006: fly_with_sth_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

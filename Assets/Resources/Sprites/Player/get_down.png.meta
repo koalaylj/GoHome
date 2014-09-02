@@ -1,6 +1,12 @@
 fileFormatVersion: 2
 guid: 20a0af0ee519b63429b40ad9140bb5d9
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: get_down_0
+    21300002: get_down_1
+    21300004: get_down_2
+    21300006: get_down_3
+    21300008: get_down_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

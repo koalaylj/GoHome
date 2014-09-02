@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 guid: 92a0689a9090154479b836c80e3b7c03
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: fart_over_0
+    21300002: fart_over_1
+    21300004: fart_over_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
