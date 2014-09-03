@@ -3,13 +3,15 @@
 *.suo
 #*.userprefs
 *.unityproj
-obj/
-Temp/
-Dist/
+
 # User-specific files
 *.user
 *.log
 *.dwlt
+
+obj/
+Temp/
+Dist/
 Library/expanedItems/
 Library/ScriptAssemblies/
 Library/metadata/
