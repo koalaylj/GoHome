@@ -3,18 +3,25 @@ using System.Collections;
 using LitJson;
 using System.Collections.Generic;
 
-public class SceneManager
+public class SceneManager : MonoBehaviour
 {
     private Player _player;
     private Strawberry _strawberry;
 
-    private Dictionary<int, SceneConfigModel> _sceneConf = new Dictionary<int, SceneConfigModel>();
+    /// <summary>
+    /// 场景配置文件
+    /// </summary>
+    private static Dictionary<int, SceneConfigModel> _sceneConf = new Dictionary<int, SceneConfigModel>();
 
-    private Dictionary<int, HurtConfigModel> _hurtConf = new Dictionary<int, HurtConfigModel>();
+    /// <summary>
+    /// 机关配置文件
+    /// </summary>
+    private static Dictionary<int, HurtConfigModel> _hurtConf = new Dictionary<int, HurtConfigModel>();
 
-    void Awake()
+    static SceneManager()
     {
-        string json = IOUtil.LoadJson("scene.json");
+        Debug.Log("static....");
+        string json = IOUtil.LoadJson("scene.conf");
         List<SceneConfigModel> sceneConf = JsonMapper.ToObject<List<SceneConfigModel>>(json);
 
         foreach (var item in sceneConf)
@@ -22,7 +29,7 @@ public class SceneManager
             _sceneConf[item.index] = item;
         }
 
-        json = IOUtil.LoadJson("hurt.json");
+        json = IOUtil.LoadJson("hurt.conf");
         List<HurtConfigModel> hurtConf = JsonMapper.ToObject<List<HurtConfigModel>>(json);
 
         foreach (var item in hurtConf)
@@ -87,7 +94,7 @@ public class SceneManager
     #region MonoBehaviour callback
     void Start()
     {
-        Debug.Log("Start");
+        Debug.Log("Start..");
     }
 
     void OnLevelWasLoaded()
