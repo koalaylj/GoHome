@@ -1,17 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
+using LitJson;
+using System.Collections.Generic;
 
-public class SceneManager : MonoBehaviour
+public class SceneManager
 {
-
-    [SerializeField]
-    private GameObject _playerPrefab;
-
-    [SerializeField]
-    private GameObject _strawberryPrefab;
-
     private Player _player;
     private Strawberry _strawberry;
+
+    private Dictionary<int, SceneConfigModel> _sceneConf = new Dictionary<int, SceneConfigModel>();
+
+    private Dictionary<int, HurtConfigModel> _hurtConf = new Dictionary<int, HurtConfigModel>();
+
+    void Awake()
+    {
+        string json = IOUtil.LoadJson("scene.json");
+        List<SceneConfigModel> sceneConf = JsonMapper.ToObject<List<SceneConfigModel>>(json);
+
+        foreach (var item in sceneConf)
+        {
+            _sceneConf[item.index] = item;
+        }
+
+        json = IOUtil.LoadJson("hurt.json");
+        List<HurtConfigModel> hurtConf = JsonMapper.ToObject<List<HurtConfigModel>>(json);
+
+        foreach (var item in hurtConf)
+        {
+            _hurtConf[item.id] = item;
+        }
+    }
 
     /// <summary>
     /// 要加载的场景
@@ -22,15 +40,10 @@ public class SceneManager : MonoBehaviour
         private set;
     }
 
-    private string _sceneName
-    {
-        get { return "Scene_1_" + SceneIndex; }
-    }
-
     /// <summary>
     /// 显示加载界面
     /// </summary>
-    /// <param name="sceneName"></param>
+    /// <param name="sceneIndex"></param>
     public static void LoadScene(int sceneIndex)
     {
         SceneIndex = sceneIndex;
@@ -43,26 +56,30 @@ public class SceneManager : MonoBehaviour
     /// </summary>
     private void LoadPrefab()
     {
+
         //加载场景
-        GameObject scenePrefab = Resources.Load("Map/Prefab/" + _sceneName) as GameObject;
+        GameObject scenePrefab = Resources.Load("Map/Prefab/" + _sceneConf[SceneIndex].prefab) as GameObject;
         GameObject scene = GameObject.Instantiate(scenePrefab) as GameObject;
         scene.transform.rotation = Quaternion.identity;
         scene.transform.position = Vector3.zero;
 
         //加载玩家
-        GameObject player = GameObject.Instantiate(_playerPrefab) as GameObject;
-
+        Object prefab = Resources.Load("Sprites/Prefab/player");
+        GameObject player = GameObject.Instantiate(prefab) as GameObject;
         player.transform.parent = scene.transform.FindChild("Start");
         player.transform.rotation = Quaternion.identity;
         player.transform.localPosition = Vector3.zero;
         _player = player.GetComponent<Player>();
 
         //加载草莓
-        GameObject strawberry = GameObject.Instantiate(_strawberryPrefab) as GameObject;
+        prefab = Resources.Load("Sprites/Prefab/strawberry");
+        GameObject strawberry = GameObject.Instantiate(prefab) as GameObject;
         strawberry.transform.parent = scene.transform.FindChild("End");
         strawberry.transform.rotation = Quaternion.identity;
         strawberry.transform.localPosition = Vector3.zero;
         _strawberry = strawberry.GetComponent<Strawberry>();
+
+        //TODO 加载机关
 
     }
 
@@ -70,7 +87,7 @@ public class SceneManager : MonoBehaviour
     #region MonoBehaviour callback
     void Start()
     {
-
+        Debug.Log("Start");
     }
 
     void OnLevelWasLoaded()

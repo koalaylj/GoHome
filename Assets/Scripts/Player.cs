@@ -111,7 +111,7 @@ public class Player : MonoBehaviour
 
     void OnDoubleTap(TapGesture gesture)
     {
-        Debug.Log("double click: " + gesture.Selection);
+        //Debug.Log("double click: " + gesture.Selection);
 
         if (gesture.Selection == this.gameObject)
         {
@@ -128,7 +128,7 @@ public class Player : MonoBehaviour
 
     void OnSwipe(SwipeGesture gesture)
     {
-        Debug.Log("swipe:::" + gesture.Direction + "," + gesture.Move + "," + gesture.Velocity);
+        //Debug.Log("swipe:::" + gesture.Direction + "," + gesture.Move + "," + gesture.Velocity);
 
         if (_state == State.FAT)
         {
@@ -179,7 +179,7 @@ public class Player : MonoBehaviour
                 //rigidbody2D.mass = 0;
                 _collider.size = _collider.size * 2;
                 _collider.center = new Vector2(_collider.center.x, _collider.center.y + 1);
-                rigidbody2D.gravityScale = 0.003f;
+                rigidbody2D.gravityScale = 0.001f;
                 break;
             default:
                 Debug.LogError("no animation name: " + animationName);

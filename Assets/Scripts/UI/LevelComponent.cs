@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class LevelComponent : MonoBehaviour
 {
@@ -10,22 +11,24 @@ public class LevelComponent : MonoBehaviour
     [SerializeField]
     private UISprite _background;
 
-    private int _index;
+    /// <summary>
+    /// 点击事件
+    /// </summary>
+    public Action<int> OnClickAction;
 
-    public int Index
-    {
-        get { return _index; }
-        set
-        {
-            _index = value;
+    public int Index { get; set; }
 
-        }
-
-    }
+    public string Name { get; set; }
 
     void Start()
     {
-
+        UIEventListener.Get(_start).onClick = (sender) =>
+        {
+            if (OnClickAction != null)
+            {
+                OnClickAction(Index);
+            }
+        };
     }
 
     // Update is called once per frame
