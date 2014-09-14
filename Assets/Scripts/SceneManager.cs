@@ -5,7 +5,14 @@ using System.Collections.Generic;
 
 public class SceneManager : MonoBehaviour
 {
+    /// <summary>
+    /// 玩家
+    /// </summary>
     private Player _player;
+
+    /// <summary>
+    /// 草莓
+    /// </summary>
     private Strawberry _strawberry;
 
     /// <summary>
@@ -20,7 +27,6 @@ public class SceneManager : MonoBehaviour
 
     static SceneManager()
     {
-        Debug.Log("static....");
         string json = IOUtil.LoadJson("scene.conf");
         List<SceneConfigModel> sceneConf = JsonMapper.ToObject<List<SceneConfigModel>>(json);
 

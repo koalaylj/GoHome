@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Consts {
-
-
-}
-
-
-public enum PlayResult{
-    LOSE,
-    NORMAL,
-    GOOD
+/// <summary>
+/// 过关结果 星级
+/// </summary>
+public enum PlayResult
+{
+    FAIL,
+    STAR1,
+    STAR2,
+    STAR3
 }

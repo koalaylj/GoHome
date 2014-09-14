@@ -23,13 +23,13 @@ public class ResultPresenter : Presenter
         {
             switch (value)
             {
-                case PlayResult.LOSE:
+                case PlayResult.STAR1:
                     _resultSprite.spriteName = "result_bad";
                     break;
-                case PlayResult.NORMAL:
+                case PlayResult.STAR2:
                     _resultSprite.spriteName = "result_soso";
                     break;
-                case PlayResult.GOOD:
+                case PlayResult.STAR3:
                     _resultSprite.spriteName = "result_good";
                     break;
             }
@@ -57,5 +57,6 @@ public class ResultPresenter : Presenter
     {
         SceneManager.LoadScene(SceneManager.SceneIndex + 1);
     }
+
 
 }
