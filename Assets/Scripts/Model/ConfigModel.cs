@@ -23,7 +23,7 @@ public class SceneConfigModel
     public string prefab { get; set; }
 
     /// <summary>
-    /// 虫子吃草莓的时间
+    /// 过关时间限制 单位 秒
     /// </summary>
     public int time { get; set; }
 
@@ -40,11 +40,6 @@ public class SceneHurtConfigModel
     public float x { get; set; }
 
     public float y { get; set; }
-
-    /// <summary>
-    /// 朝向 0:left 1:up 2:right 3:down
-    /// </summary>
-    public int direction { get; set; }
 }
 
 /// <summary>
@@ -61,7 +56,18 @@ public class HurtConfigModel
     public int type { get; set; }
 
     /// <summary>
+    /// 机关名字 
+    /// </summary>
+    public string name { get; set; }
+    
+    /// <summary>
+    /// 预制名字
+    /// </summary>
+    public string prefab { get; set; }
+
+    /// <summary>
     /// 机关数值
+    /// 朝向 0:left 1:up 2:right 3:down
     /// </summary>
     public List<int> value { get; set; }
 }
