@@ -21,5 +21,4 @@ public class StepPresenter : MonoBehaviour
         //Debug.Log("onClick:" );
     }
 
-
 }
