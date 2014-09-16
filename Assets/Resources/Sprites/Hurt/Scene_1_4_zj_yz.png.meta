@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f7db33b181a30bf4dbe4d2242dfcc1f0
+guid: 93fa5fd1cfb2a0c4aa194c16b6fe7732
 TextureImporter:
   fileIDToRecycleName:
     21300000: Scene_1_4_zj_yz
@@ -26,9 +26,9 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: 1
+    aniso: -1
     mipBias: -1
-    wrapMode: 1
+    wrapMode: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50

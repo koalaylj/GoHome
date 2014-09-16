@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 54c791396057a5b40b90610dcfd3848f
+guid: c6125677969f4174699ce939b4cd7f0d
 TextureImporter:
   fileIDToRecycleName:
     21300000: bullet_1
@@ -26,9 +26,9 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: 1
+    aniso: -1
     mipBias: -1
-    wrapMode: 1
+    wrapMode: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50

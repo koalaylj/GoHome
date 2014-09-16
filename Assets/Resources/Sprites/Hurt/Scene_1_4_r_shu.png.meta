@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 08921eed07395bf459f4110b711b1aab
+guid: 11a25f431201095429d7a600a0b4b3e3
 TextureImporter:
   fileIDToRecycleName:
     21300000: Scene_1_4_r_shu
@@ -26,9 +26,9 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: 1
+    aniso: -1
     mipBias: -1
-    wrapMode: 1
+    wrapMode: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
