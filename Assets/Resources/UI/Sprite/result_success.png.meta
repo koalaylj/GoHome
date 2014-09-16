@@ -3,6 +3,7 @@ guid: 94dae5d20bc0bd34f97485914a915320
 TextureImporter:
   fileIDToRecycleName:
     21300000: result_good
+    21300002: result_success
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

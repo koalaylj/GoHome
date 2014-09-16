@@ -6,8 +6,8 @@ using System.Collections;
 /// </summary>
 public enum PlayResult
 {
-    FAIL,
-    STAR1,
-    STAR2,
-    STAR3
+    FAIL = 0,
+    STAR1 = 1,
+    STAR2 = 2,
+    STAR3 = 3
 }

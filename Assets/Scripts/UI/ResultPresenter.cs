@@ -16,47 +16,41 @@ public class ResultPresenter : Presenter
     [SerializeField]
     private UISprite _resultSprite;
 
+    [SerializeField]
+    private GameObject[] _stars;
+
     public PlayResult Result
     {
-
         set
         {
-            switch (value)
-            {
-                case PlayResult.STAR1:
-                    _resultSprite.spriteName = "result_bad";
-                    break;
-                case PlayResult.STAR2:
-                    _resultSprite.spriteName = "result_soso";
-                    break;
-                case PlayResult.STAR3:
-                    _resultSprite.spriteName = "result_good";
-                    break;
-            }
+            bool isSuccess = value == PlayResult.FAIL;
+
+            _resultSprite.spriteName = isSuccess ? "result_success" : "result_fail";
+            _next.SetActive(isSuccess);
+
+            int stars = (int)value;
+            _stars[0].SetActive(stars >= 1);
+            _stars[1].SetActive(stars >= 2);
+            _stars[2].SetActive(stars >= 3);
+
         }
     }
 
     void Start()
     {
-        UIEventListener.Get(_next).onClick = OnClickNext;
-        UIEventListener.Get(_replay).onClick = OnClickReplay;
-        UIEventListener.Get(_back).onClick = OnClickBack;
+        UIEventListener.Get(_next).onClick = (go) =>
+        {
+            SceneManager.LoadScene(SceneManager.SceneIndex + 1);
+        };
+
+        UIEventListener.Get(_replay).onClick = (go) =>
+        {
+            SceneManager.LoadScene(SceneManager.SceneIndex);
+        };
+
+        UIEventListener.Get(_back).onClick = (go) =>
+        {
+            Application.LoadLevel("Main");
+        };
     }
-
-    private void OnClickBack(GameObject go)
-    {
-
-    }
-
-    private void OnClickReplay(GameObject go)
-    {
-        SceneManager.LoadScene(SceneManager.SceneIndex);
-    }
-
-    private void OnClickNext(GameObject go)
-    {
-        SceneManager.LoadScene(SceneManager.SceneIndex + 1);
-    }
-
-
 }
