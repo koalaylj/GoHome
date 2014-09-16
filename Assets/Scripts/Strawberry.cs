@@ -103,6 +103,9 @@ public class Strawberry : MonoBehaviour
         GUI.Label(new Rect(100, 40, 200, 40), "time:" + (int)_tick + "/" + SceneManager.SceneConfig.star1);
     }
 
+    /// <summary>
+    /// 显示过关结果(这个函数还被草莓的anmation最后一帧的时候调用)
+    /// </summary>
     void ShowResult()
     {
         Pause();

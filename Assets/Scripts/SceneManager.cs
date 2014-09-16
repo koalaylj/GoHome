@@ -14,6 +14,8 @@ public class SceneManager : MonoBehaviour
     /// </summary>
     private Strawberry _strawberry;
 
+    private List<Hurt> _hurts = new List<Hurt>();
+
     /// <summary>
     /// 场景配置文件
     /// </summary>
@@ -77,39 +79,53 @@ public class SceneManager : MonoBehaviour
     /// </summary>
     private void LoadPrefab()
     {
-
         //加载场景
-        GameObject scenePrefab = Resources.Load("Map/Prefab/" + SceneConfig.prefab) as GameObject;
-        GameObject scene = GameObject.Instantiate(scenePrefab) as GameObject;
+        GameObject scene = LoadGameObject("Map/Prefab/" + SceneConfig.prefab);
         scene.transform.rotation = Quaternion.identity;
         scene.transform.position = Vector3.zero;
 
         //加载玩家
-        Object prefab = Resources.Load("Sprites/Prefab/player");
-        GameObject player = GameObject.Instantiate(prefab) as GameObject;
-        player.transform.parent = scene.transform.FindChild("Start");
-        player.transform.rotation = Quaternion.identity;
-        player.transform.localPosition = Vector3.zero;
-        _player = player.GetComponent<Player>();
+        GameObject go = LoadGameObject("Sprites/Prefab/player");
+        go.transform.parent = scene.transform.FindChild("Start");
+        go.transform.rotation = Quaternion.identity;
+        go.transform.localPosition = Vector3.zero;
+        _player = go.GetComponent<Player>();
 
         //加载草莓
-        prefab = Resources.Load("Sprites/Prefab/strawberry");
-        GameObject strawberry = GameObject.Instantiate(prefab) as GameObject;
-        strawberry.transform.parent = scene.transform.FindChild("End");
-        strawberry.transform.rotation = Quaternion.identity;
-        strawberry.transform.localPosition = Vector3.zero;
-        _strawberry = strawberry.GetComponent<Strawberry>();
+        go = LoadGameObject("Sprites/Prefab/strawberry"); ;
+        go.transform.parent = scene.transform.FindChild("End");
+        go.transform.rotation = Quaternion.identity;
+        go.transform.localPosition = Vector3.zero;
+        _strawberry = go.GetComponent<Strawberry>();
 
-        //TODO 加载机关
+        //加载机关
+        _hurts.Clear();
+        foreach (var item in SceneConfig.hurt)
+        {
+            HurtConfigModel hurtConf = _hurtConf[item.id];
+            go = LoadGameObject("Sprites/Prefab/" + hurtConf.prefab);
+            go.transform.parent = scene.transform.FindChild("Hurt");
+            go.transform.rotation = Quaternion.identity;
+            go.transform.localPosition = new Vector3(item.x, item.y, 0); ;
+            Hurt hurt = go.GetComponent<Hurt>();
+            hurt.Properties = hurtConf.value;
+            if (hurt != null)
+            {
+                _hurts.Add(hurt);
+            }
+        }
+    }
 
+    private GameObject LoadGameObject(string prefabName)
+    {
+        Debug.Log("Loading prefab:" + prefabName);
+        Object prefab = Resources.Load(prefabName);
+        GameObject go = GameObject.Instantiate(prefab) as GameObject;
+        return go;
     }
 
 
     #region MonoBehaviour callback
-    void Start()
-    {
-        Debug.Log("Start..");
-    }
 
     void OnLevelWasLoaded()
     {
