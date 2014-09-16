@@ -9,7 +9,6 @@ public class MainPresenter : Presenter {
 
 	// Use this for initialization
 	void Start () {
-       // _pause.gameObject.GetComponent<UIEventListener>().onClick = OnClick;
         UIEventListener.Get(_load).onClick = OnClick;
 	}
 	

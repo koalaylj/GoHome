@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using LitJson;
 using System.Collections.Generic;
 
@@ -54,11 +53,20 @@ public class SceneManager : MonoBehaviour
     }
 
     /// <summary>
+    /// 当前关卡的配置
+    /// </summary>
+    public static SceneConfigModel SceneConfig
+    {
+        get { return _sceneConf[SceneIndex]; }
+    }
+
+    /// <summary>
     /// 显示加载界面
     /// </summary>
     /// <param name="sceneIndex"></param>
     public static void LoadScene(int sceneIndex)
     {
+        Time.timeScale = 1;
         SceneIndex = sceneIndex;
         Application.LoadLevel("Loading");
     }
@@ -71,7 +79,7 @@ public class SceneManager : MonoBehaviour
     {
 
         //加载场景
-        GameObject scenePrefab = Resources.Load("Map/Prefab/" + _sceneConf[SceneIndex].prefab) as GameObject;
+        GameObject scenePrefab = Resources.Load("Map/Prefab/" + SceneConfig.prefab) as GameObject;
         GameObject scene = GameObject.Instantiate(scenePrefab) as GameObject;
         scene.transform.rotation = Quaternion.identity;
         scene.transform.position = Vector3.zero;
@@ -110,13 +118,6 @@ public class SceneManager : MonoBehaviour
 
         LoadPrefab();
     }
-
-
-    void OnApplicationPause()
-    {
-
-    }
-
 
     void OnApplicationQuit()
     {
