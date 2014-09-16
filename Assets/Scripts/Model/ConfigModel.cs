@@ -23,9 +23,11 @@ public class SceneConfigModel
     public string prefab { get; set; }
 
     /// <summary>
-    /// 过关时间限制 单位 秒
+    /// 过关时间限制 单位 秒 三个星级
     /// </summary>
-    public int time { get; set; }
+    public int star1 { get; set; }
+    public int star2 { get; set; }
+    public int star3 { get; set; }
 
     /// <summary>
     /// 关卡中的机关
