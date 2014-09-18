@@ -1,8 +1,9 @@
 fileFormatVersion: 2
-guid: ff430e19c289d5e458870968a1ec51d0
+guid: a2e53cde0e7809b46bb8d41be575a655
 TextureImporter:
   fileIDToRecycleName:
-    21300000: swing
+    21300000: "\u6728\u6869_IPAD"
+    21300002: swing
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,9 +27,9 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50

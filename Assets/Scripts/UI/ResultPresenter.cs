@@ -34,7 +34,6 @@ public class ResultPresenter : Presenter
             _stars[0].SetActive(stars >= 1);
             _stars[1].SetActive(stars >= 2);
             _stars[2].SetActive(stars >= 3);
-
         }
     }
 

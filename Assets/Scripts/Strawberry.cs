@@ -109,8 +109,6 @@ public class Strawberry : MonoBehaviour
     void ShowResult()
     {
         Pause();
-        Time.timeScale = 0;
-        Presenter p = UIManager.Instance.Show("Result");
-        p.DataContent = _result;
+        SceneManager.ShowResult(_result);
     }
 }

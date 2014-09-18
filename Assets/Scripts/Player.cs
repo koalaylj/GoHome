@@ -52,10 +52,21 @@ public class Player : MonoBehaviour
     {
         if (_state != State.FAT && _trans.rotation != Quaternion.identity)
         {
-           // _trans.rotation = Quaternion.identity;
+            // _trans.rotation = Quaternion.identity;
         }
         //_grounded = Physics2D.Linecast(transform.position, _groundCheck.position, 1 << LayerMask.NameToLayer("Ground") | 1 << LayerMask.NameToLayer("Draggable"));
     }
+
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Hurt")
+        {
+            Debug.Log("i am die..");
+            SceneManager.ShowResult(PlayResult.FAIL);
+        }
+    }
+
 
     /// <summary>
     /// 移动
@@ -208,9 +219,9 @@ public class Player : MonoBehaviour
 
     void OnFingerStationary(FingerMotionEvent e)
     {
-       // if (e.Hit.collider!=null && e.Hit.collider.gameObject.layer == LayerMask.GetMask("UI"))
+        // if (e.Hit.collider!=null && e.Hit.collider.gameObject.layer == LayerMask.GetMask("UI"))
         {
-           // Debug.Log("e.Selection:" + e.Selection);
+            // Debug.Log("e.Selection:" + e.Selection);
         }
         if (e.Phase == FingerMotionPhase.Started)
         {

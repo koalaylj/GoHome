@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class SceneManager : MonoBehaviour
 {
+
     /// <summary>
     /// 玩家
     /// </summary>
@@ -25,6 +26,22 @@ public class SceneManager : MonoBehaviour
     /// 机关配置文件
     /// </summary>
     private static Dictionary<int, HurtConfigModel> _hurtConf = new Dictionary<int, HurtConfigModel>();
+
+
+    [SerializeField]
+    private bool _debug;
+
+    [SerializeField]
+    private int _index;
+
+    void Start()
+    {
+        if (_debug)
+        {
+            SceneIndex = _index;
+            OnLevelWasLoaded();
+        }
+    }
 
     static SceneManager()
     {
@@ -121,9 +138,17 @@ public class SceneManager : MonoBehaviour
         Debug.Log("Loading prefab:" + prefabName);
         Object prefab = Resources.Load(prefabName);
         GameObject go = GameObject.Instantiate(prefab) as GameObject;
+        Resources.UnloadUnusedAssets();
         return go;
     }
 
+
+    public static void ShowResult(PlayResult result)
+    {
+        Time.timeScale = 0;
+        Presenter p = UIManager.Instance.Show("Result");
+        p.DataContent = result;
+    }
 
     #region MonoBehaviour callback
 
