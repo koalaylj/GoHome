@@ -4,7 +4,6 @@
 Dist/
 
 /Library/ScriptAssemblies/
-/Library/metadata/
 /Library/ShaderCache/
 
 *.csproj
@@ -19,7 +18,3 @@ Dist/
 *.dwlt
 
 sysinfo.txt
-expanedItems
-CurrentLayout.dwlt
-guidmapper
-/Library/InspectorExpandedItems.asset
