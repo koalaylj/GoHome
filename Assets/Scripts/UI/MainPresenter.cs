@@ -2,35 +2,47 @@
 using System.Collections;
 using System;
 
-public class MainPresenter : Presenter
+public class MainPresenter : KPresenter
 {
 
     [SerializeField]
-    private GameObject _load;
+    private Transform _missionRoot;
 
     [SerializeField]
-    private int _index = 1;
+    private GameObject _missionPrefab;
 
-    public int Index
+    public override void OnShowing()
     {
-        get { return _index; }
-        set { _index = value; }
+        base.OnShowing();
+        ShowAllMissions();
     }
 
-    // Use this for initialization
-    void Start()
+    private void ShowAllMissions()
     {
-        UIEventListener.Get(_load).onClick = OnClick;
+        UIUtil.DestoryTransformChild(_missionRoot);
+
+        foreach (var item in GameManager.AllMissions)
+        {
+            GameObject child = UIUtil.AppendChild(_missionRoot.gameObject, _missionPrefab);
+            MissionComponent com = child.GetComponent<MissionComponent>();
+            com.DataContent = item;
+        }
+
+        RefreshList();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
+    /// <summary>
+    /// 刷新列表
+    /// </summary>
+    private void RefreshList()
+    {
+        UIGrid grid = _missionRoot.GetComponent<UIGrid>();
+        grid.repositionNow = true;
+
+        //UIScrollView scrollView = _listRoot.parent.GetComponent<UIScrollView>();
+        //scrollView.UpdateScrollbars(true);
+        //scrollView.ResetPosition();
     }
 
-    void OnClick(GameObject sender)
-    {
-        SceneManager.LoadScene(_index);
-    }
 }

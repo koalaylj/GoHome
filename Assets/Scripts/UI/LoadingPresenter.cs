@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LoadingPresenter : Presenter
+public class LoadingPresenter : KPresenter
 {
 
     [SerializeField]

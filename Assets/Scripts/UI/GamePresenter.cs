@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class GamePresenter : Presenter {
+public class GamePresenter : KPresenter {
 
     [SerializeField]
     private GameObject _pause;

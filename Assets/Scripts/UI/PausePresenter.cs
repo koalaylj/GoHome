@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PausePresenter : Presenter {
+public class PausePresenter : KPresenter {
 
     [SerializeField]
     private GameObject _start;

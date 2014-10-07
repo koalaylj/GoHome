@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ResultPresenter : Presenter
+public class ResultPresenter : KPresenter
 {
 
     [SerializeField]
@@ -51,7 +51,7 @@ public class ResultPresenter : Presenter
 
         UIEventListener.Get(_back).onClick = (go) =>
         {
-            Application.LoadLevel("Main");
+            Application.LoadLevel(Constant.LEVEL_START_NAME);
         };
     }
 }

@@ -11,3 +11,10 @@ public enum PlayResult
     STAR2 = 2,
     STAR3 = 3
 }
+
+public static class Constant
+{
+    // public static readonly int MAX_MISSION = 24;
+    public static readonly string LEVEL_START_NAME = "Start";
+    public static readonly string LEVEL_LOADING_NAME = "Loading";
+}

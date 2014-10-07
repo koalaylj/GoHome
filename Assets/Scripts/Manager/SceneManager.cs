@@ -2,9 +2,11 @@
 using LitJson;
 using System.Collections.Generic;
 
+/// <summary>
+/// 当前场景管理器。
+/// </summary>
 public class SceneManager : MonoBehaviour
 {
-
     /// <summary>
     /// 玩家
     /// </summary>
@@ -15,52 +17,10 @@ public class SceneManager : MonoBehaviour
     /// </summary>
     private Strawberry _strawberry;
 
+    /// <summary>
+    /// 机关
+    /// </summary>
     private List<Hurt> _hurts = new List<Hurt>();
-
-    /// <summary>
-    /// 场景配置文件
-    /// </summary>
-    private static Dictionary<int, SceneConfigModel> _sceneConf = new Dictionary<int, SceneConfigModel>();
-
-    /// <summary>
-    /// 机关配置文件
-    /// </summary>
-    private static Dictionary<int, HurtConfigModel> _hurtConf = new Dictionary<int, HurtConfigModel>();
-
-
-    [SerializeField]
-    private bool _debug;
-
-    [SerializeField]
-    private int _index;
-
-    void Start()
-    {
-        if (_debug)
-        {
-            SceneIndex = _index;
-            OnLevelWasLoaded();
-        }
-    }
-
-    static SceneManager()
-    {
-        string json = IOUtil.LoadJson("scene.conf");
-        List<SceneConfigModel> sceneConf = JsonMapper.ToObject<List<SceneConfigModel>>(json);
-
-        foreach (var item in sceneConf)
-        {
-            _sceneConf[item.index] = item;
-        }
-
-        json = IOUtil.LoadJson("hurt.conf");
-        List<HurtConfigModel> hurtConf = JsonMapper.ToObject<List<HurtConfigModel>>(json);
-
-        foreach (var item in hurtConf)
-        {
-            _hurtConf[item.id] = item;
-        }
-    }
 
     /// <summary>
     /// 要加载的场景
@@ -76,7 +36,7 @@ public class SceneManager : MonoBehaviour
     /// </summary>
     public static SceneConfigModel SceneConfig
     {
-        get { return _sceneConf[SceneIndex]; }
+        get { return GameManager.GetSceneConfByIndex(SceneIndex); }
     }
 
     /// <summary>
@@ -87,7 +47,7 @@ public class SceneManager : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneIndex = sceneIndex;
-        Application.LoadLevel("Loading");
+        Application.LoadLevel(Constant.LEVEL_LOADING_NAME);
     }
 
 
@@ -97,19 +57,19 @@ public class SceneManager : MonoBehaviour
     private void LoadPrefab()
     {
         //加载场景
-        GameObject scene = LoadGameObject("Map/Prefab/" + SceneConfig.prefab);
+        GameObject scene =IOUtil.LoadGameObject("Map/Prefab/" + SceneConfig.prefab);
         scene.transform.rotation = Quaternion.identity;
         scene.transform.position = Vector3.zero;
 
         //加载玩家
-        GameObject go = LoadGameObject("Sprites/Prefab/player");
+        GameObject go = IOUtil.LoadGameObject("Sprites/Prefab/player");
         go.transform.parent = scene.transform.FindChild("Start");
         go.transform.rotation = Quaternion.identity;
         go.transform.localPosition = Vector3.zero;
         _player = go.GetComponent<Player>();
 
         //加载草莓
-        go = LoadGameObject("Sprites/Prefab/strawberry"); ;
+        go = IOUtil.LoadGameObject("Sprites/Prefab/strawberry"); ;
         go.transform.parent = scene.transform.FindChild("End");
         go.transform.rotation = Quaternion.identity;
         go.transform.localPosition = Vector3.zero;
@@ -119,8 +79,8 @@ public class SceneManager : MonoBehaviour
         _hurts.Clear();
         foreach (var item in SceneConfig.hurt)
         {
-            HurtConfigModel hurtConf = _hurtConf[item.id];
-            go = LoadGameObject("Sprites/Prefab/" + hurtConf.prefab);
+            HurtConfigModel hurtConf = GameManager.GetHurtConfById(item.id);
+            go = IOUtil.LoadGameObject("Sprites/Prefab/" + hurtConf.prefab);
             go.transform.parent = scene.transform.FindChild("Hurt");
             go.transform.rotation = Quaternion.identity;
             go.transform.localPosition = new Vector3(item.x, item.y, 0); ;
@@ -133,20 +93,10 @@ public class SceneManager : MonoBehaviour
         }
     }
 
-    private GameObject LoadGameObject(string prefabName)
-    {
-        Debug.Log("Loading prefab:" + prefabName);
-        Object prefab = Resources.Load(prefabName);
-        GameObject go = GameObject.Instantiate(prefab) as GameObject;
-        Resources.UnloadUnusedAssets();
-        return go;
-    }
-
-
     public static void ShowResult(PlayResult result)
     {
         Time.timeScale = 0;
-        Presenter p = UIManager.Instance.Show("Result");
+        KPresenter p = UIManager.Instance.Show("Result");
         p.DataContent = result;
     }
 
