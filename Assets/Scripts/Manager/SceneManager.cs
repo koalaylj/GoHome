@@ -20,7 +20,7 @@ public class SceneManager : MonoBehaviour
     /// <summary>
     /// 机关
     /// </summary>
-    private List<Hurt> _hurts = new List<Hurt>();
+    private List<KHurt> _hurts = new List<KHurt>();
 
     /// <summary>
     /// 要加载的场景
@@ -84,7 +84,7 @@ public class SceneManager : MonoBehaviour
             go.transform.parent = scene.transform.FindChild("Hurt");
             go.transform.rotation = Quaternion.identity;
             go.transform.localPosition = new Vector3(item.x, item.y, 0); ;
-            Hurt hurt = go.GetComponent<Hurt>();
+            KHurt hurt = go.GetComponent<KHurt>();
             hurt.Properties = hurtConf.value;
             if (hurt != null)
             {
@@ -96,7 +96,7 @@ public class SceneManager : MonoBehaviour
     public static void ShowResult(PlayResult result)
     {
         Time.timeScale = 0;
-        KPresenter p = UIManager.Instance.Show("Result");
+        KPresenter p = UIManager.Instance.Show(Constant.UI_RESULT);
         p.DataContent = result;
     }
 
@@ -105,7 +105,7 @@ public class SceneManager : MonoBehaviour
     void OnLevelWasLoaded()
     {
         UIManager.Instance.HideAll();
-        UIManager.Instance.Show("Game");
+        UIManager.Instance.Show(Constant.UI_GAME);
 
         LoadPrefab();
     }

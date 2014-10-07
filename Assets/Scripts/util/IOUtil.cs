@@ -8,16 +8,19 @@ using System.IO;
 /// </summary>
 public class IOUtil
 {
+
+#if UNITY_STANDALONE || UNITY_EDITOR
     /// <summary>
-    /// 存档名字
+    /// windows/mac/linux 下的存档。
+    /// windows: %userprofile%/AppData/LocalLow/LazyFish/my_strawberry
+    /// </summary>   
+    private readonly static string PREF_NAME = Path.Combine(Application.persistentDataPath, "my-strawberry.json");
+#else
+    /// <summary>
+    /// 移动设备存档
     /// </summary>
     private readonly static string PREF_NAME = "com.github.koalaylj";
-
-    /// <summary>
-    /// windows下存档的位置,测试方便。
-    /// %userprofile%/AppData/LocalLow/LazyFish/my_strawberry
-    /// </summary>
-    private readonly static string PREF_NAME_WINDOWS = Path.Combine(Application.persistentDataPath, "my-strawberry.json");
+#endif
 
     /// <summary>
     /// 从StreamingAssets目录下记载文本文件
@@ -28,7 +31,7 @@ public class IOUtil
     {
         string json;
         var filePath = System.IO.Path.Combine(Application.streamingAssetsPath, fileName);
-        Debug.Log("Loading text file : " + filePath);
+       // Debug.Log("Loading text file : " + filePath);
 
         if (filePath.Contains("://"))
         {
@@ -51,17 +54,15 @@ public class IOUtil
     /// <param name="text"></param>
     public static void SavePrefs(string text)
     {
-        Debug.Log("保存存档");
+#if UNITY_STANDALONE || UNITY_EDITOR
+        File.WriteAllText(PREF_NAME, text, System.Text.Encoding.UTF8);
+#else
+        PlayerPrefs.SetString(PREF_NAME, text);
+        PlayerPrefs.Save();
+#endif
 
-        if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
-        {
-            File.WriteAllText(PREF_NAME_WINDOWS, text, System.Text.Encoding.UTF8);
-        }
-        else
-        {
-            PlayerPrefs.SetString(PREF_NAME, text);
-            PlayerPrefs.Save();
-        }
+        Debug.Log("存档已保存");
+
     }
 
     /// <summary>
@@ -74,20 +75,15 @@ public class IOUtil
 
         string text = "";
 
-        if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
+#if UNITY_STANDALONE || UNITY_EDITOR
+        if (File.Exists(PREF_NAME))
         {
-            if (File.Exists(PREF_NAME_WINDOWS))
-            {
-                text = File.ReadAllText(PREF_NAME_WINDOWS, System.Text.Encoding.UTF8);
-            }
+            text = File.ReadAllText(PREF_NAME, System.Text.Encoding.UTF8);
         }
-        else
-        {
-            text = PlayerPrefs.GetString(PREF_NAME, "");
-        }
-
+#else
+        text = PlayerPrefs.GetString(PREF_NAME, "");
+#endif
         return text;
-
     }
 
     /// <summary>
@@ -110,7 +106,7 @@ public class IOUtil
     /// <returns></returns>
     public static GameObject LoadPrefab(string prefabName)
     {
-        Debug.Log("Loading prefab:" + prefabName);
+//        Debug.Log("Loading prefab:" + prefabName);
         GameObject prefab = Resources.Load(prefabName) as GameObject;
         return prefab;
     }

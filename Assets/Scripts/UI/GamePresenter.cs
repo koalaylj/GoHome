@@ -19,7 +19,7 @@ public class GamePresenter : KPresenter {
 	}
 
     void OnClick(GameObject sender) {
-        UIManager.Instance.Show("Pause");
+        UIManager.Instance.Show(Constant.UI_PAUSE);
         Time.timeScale = 0;
     }
 }

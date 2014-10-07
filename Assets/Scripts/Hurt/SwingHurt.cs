@@ -5,7 +5,7 @@ using System.Collections.Generic;
 /// <summary>
 /// 机关的父类
 /// </summary>
-public class HurtSwing : Hurt
+public class SwingHurt : KHurt
 {
     /// <summary>
     /// 初始位置

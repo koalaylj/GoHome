@@ -4,6 +4,7 @@ using System.IO;
 
 /// <summary>
 /// ui相关工具类
+/// 作者：于小懒
 /// </summary>
 public class UIUtil
 {

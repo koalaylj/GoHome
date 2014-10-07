@@ -2,6 +2,10 @@ using UnityEngine;
 using System.Collections;
 using System;
 
+/// <summary>
+/// 创建类相关的工具函数
+/// 作者：于小懒
+/// </summary>
 public class ClassUtil {
     public static object LoadClass(string cn) {
         System.Type type = System.Reflection.Assembly.GetExecutingAssembly().GetType(cn);

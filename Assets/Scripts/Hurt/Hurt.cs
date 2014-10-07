@@ -5,7 +5,7 @@ using System.Collections.Generic;
 /// <summary>
 /// 机关的父类
 /// </summary>
-public class Hurt : MonoBehaviour
+public class KHurt : MonoBehaviour
 {
     /// <summary>
     /// 机关数值

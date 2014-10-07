@@ -58,6 +58,8 @@ public class Player : MonoBehaviour
 
     private Transform _trans;
 
+    //Vector3 _swipDirection = Vector3.forward;
+
     void Start()
     {
         //groundCheck = transform.Find("groundCheck");
@@ -70,13 +72,20 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        //根据帧动画动态调整碰撞框大小
         _collider.center = _render.sprite.bounds.center;
         _collider.size = new Vector2(_render.sprite.bounds.size.x * 0.75f, _render.sprite.bounds.size.y);
 
         if (_state != State.FAT && _trans.rotation != Quaternion.identity)
         {
-            // _trans.rotation = Quaternion.identity;
+            _trans.rotation = Quaternion.identity;
         }
+
+        if (_state == State.FAT)
+        {
+
+        }
+
         //_grounded = Physics2D.Linecast(transform.position, _groundCheck.position, 1 << LayerMask.NameToLayer("Ground") | 1 << LayerMask.NameToLayer("Draggable"));
     }
 
@@ -85,7 +94,6 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.tag == "Hurt")
         {
-            Debug.Log("i am die..");
             SceneManager.ShowResult(PlayResult.FAIL);
         }
     }
@@ -158,6 +166,7 @@ public class Player : MonoBehaviour
         }
     }
 
+
     void OnSwipe(SwipeGesture gesture)
     {
         //Debug.Log("swipe:::" + gesture.Direction + "," + gesture.Move + "," + gesture.Velocity);
@@ -165,8 +174,15 @@ public class Player : MonoBehaviour
         if (_state == State.FAT)
         {
             //var heading = GetSwipeDirectionVector(gesture.Direction);
+
             var heading = Vector3.Normalize(gesture.Move);
             rigidbody2D.AddForce(heading * moveForce / 15);
+
+            //var heading = Vector3.Normalize(gesture.Move);
+            //var direction = Vector3.Lerp(transform.forward, heading, Time.deltaTime * 4);
+            //transform.LookAt(direction);
+            //rigidbody2D.AddForce(heading * moveForce / 15);
+
             // transform.rotation = Quaternion.LookRotation(new Vector3(0,0,heading.z));
         }
         else

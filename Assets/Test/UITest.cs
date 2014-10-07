@@ -14,7 +14,7 @@ public class UITest : MonoBehaviour
     {
         if (GUILayout.Button("打开主界面"))
         {
-            UIManager.Instance.Show("Main");
+            UIManager.Instance.Show(Constant.UI_MAIN);
         }
     }
 

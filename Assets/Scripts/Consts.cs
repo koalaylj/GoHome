@@ -14,7 +14,32 @@ public enum PlayResult
 
 public static class Constant
 {
-    // public static readonly int MAX_MISSION = 24;
+
     public static readonly string LEVEL_START_NAME = "Start";
     public static readonly string LEVEL_LOADING_NAME = "Loading";
+
+
+    #region UI
+    /// <summary>
+    /// 主界面
+    /// </summary>
+    public static readonly string UI_MAIN = "Main";
+
+    /// <summary>
+    /// 游戏中的界面
+    /// </summary>
+    public static readonly string UI_GAME = "Game";
+
+    /// <summary>
+    /// 游戏结果界面
+    /// </summary>
+    public static readonly string UI_RESULT = "Result";
+
+    /// <summary>
+    /// 暂停界面
+    /// </summary>
+    public static readonly string UI_PAUSE = "Pause";
+
+    #endregion
+
 }

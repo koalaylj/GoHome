@@ -82,9 +82,6 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            //List<int> missions = new List<int>();
-            //missions.AddRange(_sceneConf.Keys);
-            //return missions;
             return _sceneConf.Keys;
         }
     }
@@ -95,7 +92,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Initialize();
-        UIManager.Instance.Show("Main");
+        UIManager.Instance.Show(Constant.UI_MAIN);
     }
 
     /// <summary>
