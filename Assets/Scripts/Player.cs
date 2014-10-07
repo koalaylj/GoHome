@@ -12,16 +12,36 @@ public enum State
 public class Player : MonoBehaviour
 {
 
+    /// <summary>
+    /// 移动速度(动力大小)
+    /// </summary>
     [SerializeField]
     private float moveForce = 10;
 
+    /// <summary>
+    /// 最大速度
+    /// </summary>
     [SerializeField]
     private float maxSpeed = 50;
 
+    /// <summary>
+    /// 图片渲染器
+    /// </summary>
+    private SpriteRenderer _render;
 
+    /// <summary>
+    /// 动画控制器
+    /// </summary>
+    private Animator _anim;
+
+    /// <summary>
+    /// 主摄像机
+    /// </summary>
     private Camera _camera;
 
-    // 朝向
+    /// <summary>
+    /// 朝向 
+    /// </summary>
     private bool _facingRight = true;
 
     //主角是否落地
@@ -30,7 +50,6 @@ public class Player : MonoBehaviour
     // 用于检测是否落地
     // private Transform groundCheck;
 
-    private Animator _anim;
 
     private BoxCollider2D _collider;
 
@@ -46,10 +65,14 @@ public class Player : MonoBehaviour
         _trans = this.transform;
         _camera = Camera.main;
         _collider = GetComponent<BoxCollider2D>();
+        _render = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
+        _collider.center = _render.sprite.bounds.center;
+        _collider.size = new Vector2(_render.sprite.bounds.size.x * 0.75f, _render.sprite.bounds.size.y);
+
         if (_state != State.FAT && _trans.rotation != Quaternion.identity)
         {
             // _trans.rotation = Quaternion.identity;
@@ -122,8 +145,6 @@ public class Player : MonoBehaviour
 
     void OnDoubleTap(TapGesture gesture)
     {
-        //Debug.Log("double click: " + gesture.Selection);
-
         if (gesture.Selection == this.gameObject)
         {
             if (_state == State.NORMAL)
@@ -179,18 +200,16 @@ public class Player : MonoBehaviour
                 break;
             case "normal":
                 _state = State.NORMAL;
-                _collider.size = _collider.size / 2;
-                _collider.center = new Vector2(_collider.center.x, _collider.center.y - 1);
-                //rigidbody2D.mass = 1;
+                // _collider.size = _collider.size / 2;
+                //_collider.center = new Vector2(_collider.center.x, _collider.center.y - 1);
                 rigidbody2D.gravityScale = 1;
                 _trans.rotation = Quaternion.identity;
                 break;
             case "fat":
                 _state = State.FAT;
-                //rigidbody2D.mass = 0;
-                _collider.size = _collider.size * 2;
-                _collider.center = new Vector2(_collider.center.x, _collider.center.y + 1);
-                rigidbody2D.gravityScale = 0.001f;
+                //_collider.size = _collider.size * 2;
+                //_collider.center = new Vector2(_collider.center.x, _collider.center.y + 1);
+                rigidbody2D.gravityScale = 0;
                 break;
             default:
                 Debug.LogError("no animation name: " + animationName);
@@ -230,6 +249,13 @@ public class Player : MonoBehaviour
         else if (e.Phase == FingerMotionPhase.Updated)
         {
             // var heading = GetSwipeDirectionVector(gesture.Direction);
+
+            //如果点中自己的时候 一般为双击变形 此时不进行位移
+            if (e.Hit.collider != null && e.Hit.collider.gameObject == this.gameObject)
+            {
+                return;
+            }
+
             float distance = _camera.ScreenToWorldPoint(e.Position).x - _trans.position.x;
 
             if (Math.Abs(distance) > 0.1f)
