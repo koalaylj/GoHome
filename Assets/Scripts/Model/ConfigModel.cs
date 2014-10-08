@@ -61,7 +61,7 @@ public class HurtConfigModel
     /// 机关名字 
     /// </summary>
     public string name { get; set; }
-    
+
     /// <summary>
     /// 预制名字
     /// </summary>
@@ -71,5 +71,5 @@ public class HurtConfigModel
     /// 机关数值
     /// 朝向 0:left 1:up 2:right 3:down
     /// </summary>
-    public List<int> value { get; set; }
+    public List<float> value { get; set; }
 }

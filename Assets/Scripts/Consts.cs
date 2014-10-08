@@ -18,6 +18,13 @@ public static class Constant
     public static readonly string LEVEL_START_NAME = "Start";
     public static readonly string LEVEL_LOADING_NAME = "Loading";
 
+    #region tag
+
+    public static readonly string TAG_PLAYER = "Player";
+    public static readonly string TAG_HURT = "Hurt";
+
+
+    #endregion
 
     #region UI
     /// <summary>

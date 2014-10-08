@@ -10,7 +10,7 @@ public class KHurt : MonoBehaviour
     /// <summary>
     /// 机关数值
     /// </summary>
-    public virtual List<int> Properties
+    public virtual List<float> Properties
     {
         get;
         set;

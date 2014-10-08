@@ -92,8 +92,9 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Hurt")
+        if (other.gameObject.tag == Constant.TAG_HURT)
         {
+            //TODO 播放死亡动画
             SceneManager.ShowResult(PlayResult.FAIL);
         }
     }
