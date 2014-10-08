@@ -3,10 +3,9 @@
 [Bb]uild/
 Dist/
 
-Library/expanedItems/
 Library/ScriptAssemblies/
-Library/metadata/
 Library/ShaderCache/
+Library/metadata/
 
 *.csproj
 *.sln
@@ -23,4 +22,3 @@ sysinfo.txt
 Assets/Package/NGUI/Examples/Atlases/Wooden/Control - Colored Progress Bar.prefab
 Library/CurrentLayout.dwlt
 Library/expandedItems
-ProjectSettings/EditorBuildSettings.asset
