@@ -256,9 +256,9 @@ public class Player : MonoBehaviour
     void OnFingerStationary(FingerMotionEvent e)
     {
         // if (e.Hit.collider!=null && e.Hit.collider.gameObject.layer == LayerMask.GetMask("UI"))
-        {
+        //{
             // Debug.Log("e.Selection:" + e.Selection);
-        }
+        //}
         if (e.Phase == FingerMotionPhase.Started)
         {
             //Debug.Log("*******Started moving " + e.Finger);
@@ -268,10 +268,10 @@ public class Player : MonoBehaviour
             // var heading = GetSwipeDirectionVector(gesture.Direction);
 
             //如果点中自己的时候 一般为双击变形 此时不进行位移
-            if (e.Hit.collider != null && e.Hit.collider.gameObject == this.gameObject)
-            {
-                return;
-            }
+            //if (e.Hit.collider != null && e.Hit.collider.gameObject == this.gameObject)
+            //{
+            //    return;
+            //}
 
             float distance = _camera.ScreenToWorldPoint(e.Position).x - _trans.position.x;
 
