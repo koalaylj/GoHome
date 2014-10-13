@@ -2,7 +2,7 @@
 using System.Collections;
 
 /// <summary>
-/// 带刺风车机关
+/// 踩一下就消失
 /// </summary>
 public class DisappearPlatformHurt : KHurt
 {

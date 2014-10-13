@@ -9,12 +9,10 @@ public class BulletGenerator : KHurt
     [SerializeField]
     private GameObject _bulletPrefab;
 
-    public float Speed { get; set; }
-
     /// <summary>
     /// 生成子弹
     /// </summary>
-    public void GenerateBullet()
+    public void GenerateBullet(float speed)
     {
 
         GameObject bullet = GameObject.Instantiate(_bulletPrefab) as GameObject;
@@ -25,6 +23,6 @@ public class BulletGenerator : KHurt
         bullet.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles);
 
         BulletHurt hurt = bullet.GetComponent<BulletHurt>();
-        hurt.Speed = Speed;
+        hurt.Speed = speed;
     }
 }

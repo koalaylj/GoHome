@@ -2,16 +2,15 @@
 using System.Collections;
 
 /// <summary>
-/// 仙人球机关
+/// 发射子弹类机关
 /// </summary>
-public class CactusHurt : KHurt
+public class GunHurt : KHurt
 {
     [SerializeField]
-    private BulletGenerator[] _guns;
+    private BulletGenerator _bulletGenerator;
 
     private Transform _trans;
 
-    private float _rotateSpeed; //旋转速度
     private float _fireRate;    //开火频率
     private float _bulletSpeed; //子弹速度
 
@@ -20,9 +19,8 @@ public class CactusHurt : KHurt
     void Start()
     {
         _trans = this.transform;
-        _rotateSpeed = Properties[0];
-        _fireRate = Properties[1];
-        _bulletSpeed = Properties[2];
+        _fireRate = Properties[0];
+        _bulletSpeed = Properties[1];
     }
 
     void Update()
@@ -31,14 +29,8 @@ public class CactusHurt : KHurt
 
         if (_timeCount >= _fireRate)
         {
-            foreach (var item in _guns)
-            {
-                item.GenerateBullet(_bulletSpeed);
-            }
-
+            _bulletGenerator.GenerateBullet(_bulletSpeed);
             _timeCount = 0;
         }
-
-        _trans.Rotate(Vector3.forward * Time.deltaTime * _rotateSpeed);
     }
 }

@@ -32,14 +32,4 @@ public class BulletHurt : KHurt
 
         _trans.Translate(_trans.right * Time.deltaTime * Speed, Space.World);
     }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        Destroy(gameObject);
-    }
-
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        Destroy(gameObject);
-    }
 }

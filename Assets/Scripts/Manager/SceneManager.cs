@@ -84,7 +84,7 @@ public class SceneManager : MonoBehaviour
             go.transform.parent = scene.transform.FindChild("Hurt");
             go.transform.rotation = Quaternion.identity;
             go.transform.localPosition = new Vector3(item.x, item.y, 0); ;
-            KHurt hurt = go.GetComponent<KHurt>();
+            KHurt hurt = go.GetComponentInChildren<KHurt>();
             hurt.Properties = hurtConf.value;
             if (hurt != null)
             {
