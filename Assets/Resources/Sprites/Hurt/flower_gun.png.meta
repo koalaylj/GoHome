@@ -3,12 +3,13 @@ guid: d784affa051c8194ab523f454d40a194
 TextureImporter:
   fileIDToRecycleName:
     21300000: flower
-    21300002: flower_2
-    21300004: flower_1
-    21300006: flower_2
-    21300008: flower_3
-    21300010: flower_4
-    21300012: flower_5
+    21300002: flower_1
+    21300004: flower_2
+    21300006: flower_1
+    21300008: flower_4
+    21300010: flower_5
+    21300012: flower_6
+    21300014: flower_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -50,65 +51,65 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: flower_2
+    - name: flower_1
       rect:
         serializedVersion: 2
         x: 3
         y: 130
         width: 110
         height: 104
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 2
+      pivot: {x: .5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: flower_1
+    - name: flower_2
       rect:
         serializedVersion: 2
         x: 124
         y: 134
         width: 116
         height: 100
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 2
+      pivot: {x: .5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: flower_2
+    - name: flower_3
       rect:
         serializedVersion: 2
         x: 251
         y: 134
         width: 119
         height: 100
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 2
+      pivot: {x: .5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: flower_3
+    - name: flower_4
       rect:
         serializedVersion: 2
         x: 4
         y: 9
         width: 115
         height: 110
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 2
+      pivot: {x: .5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: flower_4
+    - name: flower_5
       rect:
         serializedVersion: 2
         x: 131
         y: 9
         width: 111
         height: 110
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 2
+      pivot: {x: .5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: flower_5
+    - name: flower_6
       rect:
         serializedVersion: 2
         x: 252
         y: 19
         width: 111
         height: 100
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 2
+      pivot: {x: .5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
