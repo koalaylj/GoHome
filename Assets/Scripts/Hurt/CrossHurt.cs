@@ -2,7 +2,7 @@
 using System.Collections;
 
 /// <summary>
-/// 带刺风车机关
+/// 旋转机关
 /// </summary>
 public class CrossHurt : KHurt
 {
@@ -19,6 +19,6 @@ public class CrossHurt : KHurt
 
     void Update()
     {
-        _target.Rotate(Vector3.forward * Time.deltaTime * Properties[0]);
+        _target.Rotate(Vector3.forward * Time.deltaTime * Properties[0] * Properties[1]);
     }
 }
