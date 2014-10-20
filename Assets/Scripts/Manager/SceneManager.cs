@@ -57,7 +57,7 @@ public class SceneManager : MonoBehaviour
     private void LoadPrefab()
     {
         //加载场景
-        GameObject scene =IOUtil.LoadGameObject("Map/Prefab/" + SceneConfig.prefab);
+        GameObject scene = IOUtil.LoadGameObject("Map/Prefab/" + SceneConfig.prefab);
         scene.transform.rotation = Quaternion.identity;
         scene.transform.position = Vector3.zero;
 
@@ -82,10 +82,10 @@ public class SceneManager : MonoBehaviour
             HurtConfigModel hurtConf = GameManager.GetHurtConfById(item.id);
             go = IOUtil.LoadGameObject("Sprites/Prefab/" + hurtConf.prefab);
             go.transform.parent = scene.transform.FindChild("Hurt");
-            go.transform.rotation = Quaternion.identity;
+            go.transform.localEulerAngles = new Vector3(0, 0, item.rotation);
             go.transform.localPosition = new Vector3(item.x, item.y, 0); ;
             KHurt hurt = go.GetComponentInChildren<KHurt>();
-            hurt.Properties = hurtConf.value;
+            hurt.Properties = item.value.Count == 0 ? hurtConf.value : item.value;
             if (hurt != null)
             {
                 _hurts.Add(hurt);

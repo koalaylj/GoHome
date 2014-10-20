@@ -23,6 +23,7 @@ public class FlowerAttackHurt : KHurt
         _render = GetComponent<SpriteRenderer>();
 
         _fireRate = Properties[0];
+        //_fireRate = 3;
     }
 
     void Update()

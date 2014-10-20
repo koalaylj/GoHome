@@ -42,6 +42,16 @@ public class SceneHurtConfigModel
     public float x { get; set; }
 
     public float y { get; set; }
+
+    /// <summary>
+    /// 旋转角度
+    /// </summary>
+    public float rotation { get; set; }
+
+    /// <summary>
+    /// 替换机关配置文件中的value
+    /// </summary>
+    public List<float> value { get; set; }
 }
 
 /// <summary>
@@ -50,12 +60,11 @@ public class SceneHurtConfigModel
 public class HurtConfigModel
 {
 
-    public int id { get; set; }
-
     /// <summary>
-    /// 机关类型
+    /// 机关id
+    /// 四位数：AABB AA为类型
     /// </summary>
-    public int type { get; set; }
+    public int id { get; set; }
 
     /// <summary>
     /// 机关名字 
@@ -69,7 +78,17 @@ public class HurtConfigModel
 
     /// <summary>
     /// 机关数值
-    /// 朝向 0:left 1:up 2:right 3:down
     /// </summary>
     public List<float> value { get; set; }
+
+    /// <summary>
+    /// 机关描述
+    /// </summary>
+    public List<string> desc { get; set; }
+
+    public override string ToString()
+    {
+        return string.Format("id:{0},name:{1},prefab:{2},value:{3},desc:{4}", id, name, prefab, value, desc);
+    }
+
 }
