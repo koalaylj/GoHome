@@ -22,8 +22,6 @@ public class FlowerGunHurt : KHurt
 
     private float _timeCount = 0;
 
-
-
     void Start()
     {
         _anim = GetComponent<Animator>();

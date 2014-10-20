@@ -13,8 +13,10 @@ public class FlowerAttackHurt : KHurt
 
     private float _fireRate;    //开火频率
 
+    private float _delay;       //延迟时间
+
     private float _timeCount = 0;
-    
+
     void Start()
     {
         _collider = GetComponent<BoxCollider2D>();
@@ -22,8 +24,8 @@ public class FlowerAttackHurt : KHurt
         _trans = this.transform;
         _render = GetComponent<SpriteRenderer>();
 
-        _fireRate = Properties[0];
-        //_fireRate = 3;
+        _delay = Properties[0];
+        _fireRate = Properties[1];
     }
 
     void Update()
@@ -34,10 +36,11 @@ public class FlowerAttackHurt : KHurt
 
         _timeCount += Time.deltaTime;
 
-        if (_timeCount >= _fireRate)
+        if (_timeCount >= _fireRate + _delay)
         {
             _anim.SetTrigger("eat");
             _timeCount = 0;
+            _delay = 0;
         }
     }
 }
