@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PlayerControl : MonoBehaviour
@@ -33,18 +33,6 @@ public class PlayerControl : MonoBehaviour
 
     void FixedUpdate()
     {
-
-        //   if (Input.GetKey(KeyCode.S))
-        //   {
-        //       anim.SetBool("Cowered", true);
-        //   }
-
-
-        // if (Input.GetKey(KeyCode.W))
-        // {
-        //    anim.SetBool("Cowered", false);
-        //}
-
         anim.SetBool("Cowered", Input.GetAxis("Vertical") < 0);
 
         if (anim.GetBool("Cowered"))
@@ -113,5 +101,4 @@ public class PlayerControl : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
     }
-
 }

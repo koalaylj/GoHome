@@ -31,6 +31,7 @@ public class PausePresenter : KPresenter {
 
     private void OnClickStart(GameObject go)
     {
+        Debug.Log("OnClickStart....");
         UIManager.Instance.Hide(this);
         Time.timeScale = 1;
     }

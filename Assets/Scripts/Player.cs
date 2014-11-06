@@ -45,12 +45,14 @@ public class Player : MonoBehaviour
     private bool _facingRight = true;
 
     //主角是否落地
-    //private bool _grounded = false;
+    private bool _grounded = true;
 
     // 用于检测是否落地
-    // private Transform groundCheck;
+    private Transform _groundCheck;
 
-
+    /// <summary>
+    /// 碰撞框
+    /// </summary>
     private BoxCollider2D _collider;
 
     // 是否为空的状态
@@ -62,7 +64,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        //groundCheck = transform.Find("groundCheck");
+        _groundCheck = transform.Find("groundCheck");
         _anim = GetComponent<Animator>();
         _trans = this.transform;
         _camera = Camera.main;
@@ -86,7 +88,7 @@ public class Player : MonoBehaviour
 
         }
 
-        //_grounded = Physics2D.Linecast(transform.position, _groundCheck.position, 1 << LayerMask.NameToLayer("Ground") | 1 << LayerMask.NameToLayer("Draggable"));
+        _grounded = Physics2D.Linecast(_trans.position, _groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
     }
 
 
@@ -105,7 +107,7 @@ public class Player : MonoBehaviour
     /// </summary>
     private void NormalMove(float distance)
     {
-        if (_state != State.NORMAL)
+        if (_state != State.NORMAL || !_grounded)
         {
             return;
         }
@@ -236,28 +238,11 @@ public class Player : MonoBehaviour
         _anim.SetTrigger(animationName);
     }
 
-    void OnFingerMove(FingerMotionEvent e)
-    {
-        //if (e.Phase == FingerMotionPhase.Started)
-        //{
-        //    Debug.Log("Started moving " + e.Finger);
-        //}
-        //else if (e.Phase == FingerMotionPhase.Updated)
-        //{
-        //    Debug.Log("Updated moving " + e.Finger);
-        //}
-        //else
-        //{
-        //    Debug.Log("Stopped moving " + e.Finger);
-        //}
-    }
-
-
     void OnFingerStationary(FingerMotionEvent e)
     {
         // if (e.Hit.collider!=null && e.Hit.collider.gameObject.layer == LayerMask.GetMask("UI"))
         //{
-            // Debug.Log("e.Selection:" + e.Selection);
+        // Debug.Log("e.Selection:" + e.Selection);
         //}
         if (e.Phase == FingerMotionPhase.Started)
         {
@@ -278,10 +263,6 @@ public class Player : MonoBehaviour
             if (Math.Abs(distance) > 0.1f)
             {
                 NormalMove(distance);
-            }
-            else
-            {
-                Stop();
             }
         }
         else
