@@ -240,10 +240,12 @@ public class Player : MonoBehaviour
 
     void OnFingerStationary(FingerMotionEvent e)
     {
-        // if (e.Hit.collider!=null && e.Hit.collider.gameObject.layer == LayerMask.GetMask("UI"))
-        //{
-        // Debug.Log("e.Selection:" + e.Selection);
-        //}
+        if (e.Hit.collider != null && e.Selection.tag == "Trigger") //&& e.Hit.collider.gameObject.layer == LayerMask.GetMask("UI")
+        {
+           // Debug.Log("OnFingerStationary:e.Selection:" + e.Selection.name);
+            return;
+        }
+
         if (e.Phase == FingerMotionPhase.Started)
         {
             //Debug.Log("*******Started moving " + e.Finger);

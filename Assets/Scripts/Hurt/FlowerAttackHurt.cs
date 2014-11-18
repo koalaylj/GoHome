@@ -23,7 +23,6 @@ public class FlowerAttackHurt : KHurt
         _anim = GetComponent<Animator>();
         _trans = this.transform;
         _render = GetComponent<SpriteRenderer>();
-
         _delay = Properties[0];
         _fireRate = Properties[1];
     }
