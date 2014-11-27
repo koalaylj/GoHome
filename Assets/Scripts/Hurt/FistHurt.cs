@@ -7,6 +7,9 @@ public class FistHurt : KHurt
 
     private enum State { STOP, PUNCHING };
 
+    //触发这个拳头的按钮编号，事件源。
+    private int _observer;
+
 
     /// <summary>
     /// 动画控制器
@@ -18,13 +21,20 @@ public class FistHurt : KHurt
     void Start()
     {
         _anim = GetComponent<Animator>();
+        _observer = (int)Properties[0];
+        SwitchHurt[] switches = this.transform.parent.GetComponentsInChildren<SwitchHurt>();
 
-        SwitchHurt s = this.transform.parent.GetComponentInChildren<SwitchHurt>();
-        s.SwitchOnEvent += () =>
+        foreach (var item in switches)
         {
-            _state = State.PUNCHING;
-            _anim.SetTrigger("punch");
-        };
+            if (item.Id == _observer)
+            {
+                item.SwitchOnEvent += () =>
+                {
+                    _state = State.PUNCHING;
+                    _anim.SetTrigger("punch");
+                };
+            }
+        }
     }
 
     void Update()

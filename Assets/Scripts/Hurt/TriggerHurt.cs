@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class SwitchHurt : KHurt
+public class TriggerHurt : KHurt
 {
 
     private enum State { ON, OFF };
@@ -34,14 +34,14 @@ public class SwitchHurt : KHurt
     void Start()
     {
         _anim = GetComponent<Animator>();
-        _clickTimesLimit = (int)Properties[1];
         _id = (int)Properties[0];
+        _clickTimesLimit = (int)Properties[1];
     }
 
 
-    void OnTap(TapGesture gesture)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (gesture.Selection == this.gameObject)
+        if (other.tag == "Player")
         {
             if (CanSwitch())
             {
@@ -62,7 +62,6 @@ public class SwitchHurt : KHurt
             }
         }
     }
-
 
     void OnAnimationOver()
     {
