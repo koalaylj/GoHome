@@ -10,7 +10,7 @@ public class FadeDoor : KHurt
     private Color _color;
 
     //消失时间
-    private float _fadeTime;
+    private float _fadeTime = 1;
 
     //触发这个拳头的按钮编号，事件源。
     private int _observer;
@@ -22,16 +22,32 @@ public class FadeDoor : KHurt
         _observer = (int)Properties[0];
         _fadeTime = Properties[1];
 
-        TriggerHurt[] triggers = this.transform.parent.GetComponentsInChildren<TriggerHurt>();
+        TriggerHurt[] triggers1 = this.transform.parent.GetComponentsInChildren<TriggerHurt>();
+        SwitchHurt[] triggers2 = this.transform.parent.GetComponentsInChildren<SwitchHurt>();
 
-        foreach (var item in triggers)
+
+        foreach (var item in triggers1)
         {
             if (item.Id == _observer)
             {
                 item.SwitchOnEvent += () =>
                 {
                     if (_state == State.CLOSED)
-                    {                    
+                    {
+                        _state = State.OPEN;
+                    }
+                };
+            }
+        }
+
+        foreach (var item in triggers2)
+        {
+            if (item.Id == _observer)
+            {
+                item.SwitchOnEvent += () =>
+                {
+                    if (_state == State.CLOSED)
+                    {
                         _state = State.OPEN;
                     }
                 };
@@ -46,15 +62,12 @@ public class FadeDoor : KHurt
         {
             timeCount += Time.deltaTime;
             float alpha = Mathf.Lerp(1,0,timeCount/_fadeTime);
+            this.renderer.material.color = new Color(_color.r, _color.g, _color.a, alpha);
+
             if (alpha <= 0.01)
             {
-                for (int i = 0; i < transform.childCount; i++)
-                {
-                    Destroy(transform.GetChild(i).gameObject);
-                }
-                Destroy(this);
+                Destroy(gameObject);
             }
-            this.renderer.material.color = new Color(_color.r, _color.g, _color.a, alpha);
         }
     }
 }
