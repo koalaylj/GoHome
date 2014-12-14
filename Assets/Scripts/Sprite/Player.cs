@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
 
 
     /// <summary>
-    /// 移动
+    /// 普通移动
     /// </summary>
     private void NormalMove(float distance)
     {
