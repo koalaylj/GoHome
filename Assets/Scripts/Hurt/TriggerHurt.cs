@@ -41,8 +41,9 @@ public class TriggerHurt : KHurt
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.tag.Equals(Constant.TAG_PLAYER) || other.tag.Equals(Constant.TAG_AI))
         {
+            Debug.Log("dddddddddd");
             if (CanSwitch())
             {
                 //可点击的次数

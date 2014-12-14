@@ -22,6 +22,7 @@ public static class Constant
 
     public static readonly string TAG_PLAYER = "Player";
     public static readonly string TAG_HURT = "Hurt";
+    public static readonly string TAG_AI = "AI";
 
 
     #endregion

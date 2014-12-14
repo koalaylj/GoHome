@@ -101,6 +101,16 @@ public class Player : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == Constant.TAG_HURT)
+        {
+            //TODO 播放死亡动画
+            SceneManager.ShowResult(PlayResult.FAIL);
+        }
+
+    }
+
 
     /// <summary>
     /// 普通移动

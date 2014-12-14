@@ -7,8 +7,6 @@ public class FadeDoor : KHurt
 
     private State _state = State.CLOSED;
 
-    private Transform _trans;
-
     private Color _color;
 
     //消失时间
@@ -20,7 +18,6 @@ public class FadeDoor : KHurt
 
     void Start()
     {
-        _trans = this.transform;
         _color = this.renderer.material.color;
         _observer = (int)Properties[0];
         _fadeTime = Properties[1];
@@ -51,6 +48,10 @@ public class FadeDoor : KHurt
             float alpha = Mathf.Lerp(1,0,timeCount/_fadeTime);
             if (alpha <= 0.01)
             {
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    Destroy(transform.GetChild(i).gameObject);
+                }
                 Destroy(this);
             }
             this.renderer.material.color = new Color(_color.r, _color.g, _color.a, alpha);
