@@ -12,7 +12,7 @@ public class FadeDoor : KHurt
     //消失时间
     private float _fadeTime = 1;
 
-    //触发这个拳头的按钮编号，事件源。
+    //触发这个的按钮编号，事件源。
     private int _observer;
 
 

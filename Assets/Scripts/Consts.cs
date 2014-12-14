@@ -18,6 +18,9 @@ public static class Constant
     public static readonly string LEVEL_START_NAME = "Start";
     public static readonly string LEVEL_LOADING_NAME = "Loading";
 
+    public static readonly int DEADLINE_Y = -20;
+
+
     #region tag
 
     public static readonly string TAG_PLAYER = "Player";
@@ -26,6 +29,9 @@ public static class Constant
 
 
     #endregion
+
+
+
 
     #region UI
     /// <summary>
